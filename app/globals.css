@@ -6,7 +6,7 @@
 .header{@apply bg-white z-[9999] fixed h-[6.609375em] px-[1em] lg:h-[6.9248125em] py-[0.6875em] text-center md:h-[3.625em] top-0 left-0 w-full border border-b-black border-b}
 .logo{@apply cursor-pointer py-[1em] md:hidden lg:hidden text-[0.8125em] tracking-[1.3px] font-[800]}
 .logo2{@apply cursor-pointer lg:text-[1em] lg:mx-[20em] py-[1em] hidden md:block md:h-auto lg:block text-[0.8125em] tracking-[1.3px] font-[800]}
-.appBody{@apply lg:mt-[6.9em] md:mt-[3.6em] mt-[6.7em]}
+.appBody{@apply lg:mt-[6.9em] md:mt-[3.6em] mt-[6.5em]}
 .hero{@apply flex items-end border border-black  bg-no-repeat bg-cover z-0 md:bg-center bg-bottom  p-[3em] lg:h-[35.6074375em] w-full md:h-[28.2831875em] bg-blue-500 h-[36.0615em]}
 .helpful-links{@apply hidden  uppercase tracking-[1.3px] text-[0.8125em] items-center w-full justify-center gap-[0.5em] lg:flex h-[3em] }
 .helpful-links p{@apply py-[0.5em] font-[500] tracking-[1px] text-[0.875em] px-[0.75em]}
