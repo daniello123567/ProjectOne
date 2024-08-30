@@ -7,6 +7,21 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+
+      sm: '576px',
+
+      md: '768px',
+
+      lg: '1024px',
+
+      xl: '1280px',
+
+      '2xl': '1536px',
+
+      daddy: '447px', // Add your custom screen size here
+
+    },
     gridTemplateColumns:{
       auto:"repeat(auto-fit, minmax(50%, 1fr))",
     },
