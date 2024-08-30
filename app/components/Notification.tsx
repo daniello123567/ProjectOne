@@ -10,11 +10,11 @@ function Notification() {
         x:['-100%',"0%"],
         transition:{
           ease:"linear",
-          duration:20,
+          duration:15,
           repeat:Infinity
         }
       }} className='flex gap-[1em] items-center'>
-       <NotificationMultiplier Text='Enjoy free delivery on all Nubé orders up to ₦60,000. Offer valid for Lagos deliveries only.'/>
+          <NotificationMultiplier Text='Enjoy free delivery on all Nubé orders up to ₦60,000. Offer valid for Lagos deliveries only.'/>
         </motion.div>
     </div>
   )
