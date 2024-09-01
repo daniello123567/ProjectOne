@@ -1,13 +1,20 @@
-import React from 'react'
+"use client"
+import React, { act, useEffect, useRef } from 'react'
 import localFont from "next/font/local"
 import Links from './header/Links'
+import { useMediaQuery } from 'react-responsive'
 const LogoFont = localFont({ src: "../fonts/dw-futura-light.woff2" })
-function Header() {
+function Header({activatedynamicheader}:{activatedynamicheader?:boolean}) {
+  const isbetweenlargeandmediumscreen = useMediaQuery({ minWidth: 992, maxWidth: 991 });
+  useEffect(()=>{
+    console.log('changes');
+    
+  },[isbetweenlargeandmediumscreen])
   return (
-    <div className='header'>
+    <div  className={!activatedynamicheader?'header':'header2'}>
       <div className='header-content'>
-        <div className={`${LogoFont.className} logo`}>NUBE</div>
-         <Links/>
+        {!activatedynamicheader&&<div className={`${LogoFont.className} logo`}>NUBE</div>}
+         <Links isOtherlinksVisible={activatedynamicheader}/>
       </div>
     </div>
   )

@@ -1,10 +1,13 @@
+"use client"
+import { useMediaQuery } from 'react-responsive'
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import localFont from 'next/font/local'
 const LogoFont = localFont({ src: "../../fonts/dw-futura-light.woff2" })
 const LogoFont2 = localFont({ src: "../../fonts/dd.woff2" })
-function Links() {
+function Links({isOtherlinksVisible}:{isOtherlinksVisible:boolean|undefined}) {
+
   return (<>
     <div className='Links'>
           <Link href="">
@@ -30,12 +33,13 @@ function Links() {
           </div>
           </Link>
         </div>
-        <div className={`${LogoFont2.className} helpful-links `}>
+        <div className={`${LogoFont2.className} text-center helpful-links `}>
           <p>Jewelries</p>
           <p>shop</p>
           <p>Jewelries</p>
           <p>Jewelries</p>
-        </div></>
+        </div>
+        </>
   )
 }
 
