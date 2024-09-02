@@ -19,12 +19,10 @@ const config: Config = {
 
       '2xl': '1536px',
 
-      daddy: '447px', // Add your custom screen size here
+      daddy: '447px',
 
     },
-    gridTemplateColumns:{
-      auto:"repeat(auto-fit, minmax(50%, 1fr))",
-    },
+    
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

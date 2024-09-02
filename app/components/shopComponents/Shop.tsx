@@ -5,6 +5,7 @@ import Shopfilters from './Shopfilters'
 import Filters from './Filter&Def'
 import { useInView } from 'react-intersection-observer'
 import globalStore from '@/app/store/globalstore'
+import Products from '../Products'
 function Shop() {
   const {setactivatedynamicheader} = useContext(globalStore)
   const {ref,inView} = useInView({
@@ -20,6 +21,7 @@ function Shop() {
       <ShopTitle/>
       <Shopfilters/>
       <Filters/>
+      <Products/>
       </div>
   )
 }

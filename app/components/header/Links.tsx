@@ -15,6 +15,7 @@ function Links({isOtherlinksVisible}:{isOtherlinksVisible:boolean|undefined}) {
            <Image src="/Menu.svg" width={500} height={300} alt='menu' />
            </div>
           </Link>
+          {isOtherlinksVisible&&<p className='ml-[-3em] md:hidden'>NUBE</p>}
           <Link href="">
           <div className='w-[ 1.125em] h-[1.125em] bg-white'>
           <Image src="/Search.svg" width={500} height={300} alt='menu' />

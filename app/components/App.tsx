@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Hero from './Hero'
-import Navtocat from './Navtocat'
+import Navtocat from '../../Navtocat'
 import Notification from './Notification'
 import Shop from './shopComponents/Shop'
 import globalStore from '../store/globalstore'
