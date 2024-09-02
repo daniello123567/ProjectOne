@@ -13,6 +13,8 @@ function page() {
      <Swiper
      slidesPerView={1}
      modules={[Pagination]}
+     grabCursor={true}
+     mousewheel={true}
      pagination={{
      clickable:true,
      el:'.swiperboy',
