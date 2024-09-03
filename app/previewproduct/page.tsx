@@ -6,9 +6,6 @@ import 'swiper/css'
 function page() {
   const menu = ['swiper1','swiper2']
   return (
-    // <div className='w-[11.15625em] bg-[#F5F5F5] h-[21.44375em]'>
-
-    // </div>
     <div className='w-[10em] relative border border-black h-[10em]'>
      <Swiper
      slidesPerView={1}

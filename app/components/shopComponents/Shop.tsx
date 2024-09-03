@@ -6,6 +6,7 @@ import Filters from './Filter&Def'
 import { useInView } from 'react-intersection-observer'
 import globalStore from '@/app/store/globalstore'
 import Products from '../Products'
+import Popupfiltercomponent from '../Popupfiltercomponent'
 function Shop() {
   const {setactivatedynamicheader} = useContext(globalStore)
   const {ref,inView} = useInView({
@@ -17,7 +18,7 @@ function Shop() {
   setactivatedynamicheader(false)
  }
   return (
-    <div ref={ref} className='h-[200vh]'>
+    <div ref={ref} className='h-max'>
       <ShopTitle/>
       <Shopfilters/>
       <Filters/>

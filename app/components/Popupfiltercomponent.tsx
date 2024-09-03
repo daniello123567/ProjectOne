@@ -1,0 +1,154 @@
+"use client"
+import React, { useContext, useEffect, useState } from 'react'
+import localFont from 'next/font/local'
+import {Switch,ChakraProvider} from "@chakra-ui/react"
+import {AnimatePresence, motion} from "framer-motion"
+const font = localFont({src:"../fonts/dd.woff2"});
+
+const smallfont = localFont({src:"../fonts/smallfontforbrondon.woff2"});
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import globalStore from '../store/globalstore'
+function Popupfiltercomponent() {
+ const [presentlyCheckedSortoption,setOption] = useState<string>();
+ const [presentlyCheckedPriceoption,setPriceOption] = useState<string>();
+ const [currentSetprice,setcurrentPrice] = useState<number>(8000);
+ const {replace} = useRouter();
+ const searchParams = useSearchParams();
+ const params = new URLSearchParams(searchParams);
+  const clearPricefilter=()=>{
+    params.delete('fromPrice');
+    params.delete('Underprice');
+    replace(`?${params}`)
+  }
+ const handleSortby=(id:string)=>{
+     if(presentlyCheckedSortoption==id){
+      setOption("");
+      params.delete('sortBy');
+      replace(`?${params}`)
+     }else {
+      setOption(id);
+       params.set('sortBy',id);
+       replace(`?${params}`)
+    }
+ }
+ const resetPrice=()=>{
+  if(currentSetprice==0){
+  setcurrentPrice(8000)
+}
+ }
+ const handlePrice=(id?:string)=>{
+  if(presentlyCheckedPriceoption!==id){
+    setPriceOption(id);
+    if(id!=="morePrice"){
+      params.set('Underprice',String(currentSetprice));
+      params.delete('fromPrice')
+      replace(`?${params}`)
+    }else{
+      params.set('fromPrice',String(currentSetprice));
+      params.delete('Underprice')
+      replace(`?${params}`)
+    }
+  }else{
+    setPriceOption("");
+    params.delete('Underprice');
+    params.delete('fromPrice');
+    replace(`?${params}`)
+  }
+ }
+const handleAvailability = ()=>{
+  if(params.has('availability')){
+    params.delete('availability');
+    replace(`?${params}`);
+  }else{
+ params.set('availability',"new");
+ replace(`?${params}`)}
+}
+const readUrlAndSetButtonsActive =()=>{
+
+  const isSortByActive = params.get('sortBy');
+  if(isSortByActive){
+    setOption(isSortByActive)
+  }
+  const isunderPriceActive = params.get('Underprice');
+   if(isunderPriceActive){
+    setPriceOption("underPrice");
+   }
+   const isfromPriceActive = params.get('fromPrice');
+if(isfromPriceActive){
+  setPriceOption("morePrice")
+}
+}
+useEffect(()=>{
+  readUrlAndSetButtonsActive()
+},[])
+const animationVariants = {
+  init:{
+    y:500
+  },
+  anim:{
+    y:0,
+    transition:{
+      duration:0.3,
+    }
+  },
+ ex:{
+  y:500,
+  transition:{
+    duration:0.01,
+    ease:"easeInOut"
+  },
+ }
+}
+const {setFilterVisiblity} = useContext(globalStore)
+  return (
+
+    <ChakraProvider>
+    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} text-[1rem] w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white shadow-2xl bottom-0 top-[1.5rem] z-[100000] h-[100vh]`}>
+      <div className='flex  justify-between'>
+        <p className={`${font.className} text-[1.25em]`}>Filters</p>
+        <button onClick={()=>setFilterVisiblity(false)} type="button" className=''>&#10005;</button>
+      </div>
+      <div className='w-full mt-[3em] py-[1em] border-t border-black border-b'>
+        <p>Availability</p>
+        <div className='flex mt-[1em] items-center gap-[0.75em]'>
+          <Switch isChecked={params.has('availability')} onChange={handleAvailability} id='email-alerts' />
+          <p>New Arrivals</p>
+        </div>
+
+
+      </div>
+      <div className='w-full py-[1em]  border-black border-b'>
+        <p>SortBy</p>
+        <div className='flex mt-[1em] items-center gap-[0.75em]'>
+            <input onChange={()=>handleSortby("hightolow")} id="hightolow" checked={presentlyCheckedSortoption=="hightolow"}  title='price' type="checkbox"  />
+          <p>Price:High to Low</p>
+        </div>
+        <div className='flex items-center gap-[0.75em]'>
+        <input onChange={()=>handleSortby("lowtohigh")} id="lowtohigh" checked={presentlyCheckedSortoption=="lowtohigh"}  title='price' type="checkbox"  />
+        <p>Price:Low to high</p>
+        </div>
+
+      </div>
+      <div className='w-full py-[1em]  border-black border-b'>
+        <p>Specify Price</p>
+        <div className='flex mt-[1em] items-center gap-[0.75em]'>
+            <input onChange={()=>handlePrice("underPrice")} checked={presentlyCheckedPriceoption=="underPrice"}  title='price' type="checkbox"  />
+          <p>Under &#8358;{currentSetprice}</p>
+        </div>
+        <div className='flex items-center gap-[0.75em]'>
+        <input onChange={()=>handlePrice("morePrice")} checked={presentlyCheckedPriceoption=="morePrice"}  title='price' type="checkbox"  />
+        <p>&#8358;{currentSetprice}+</p>
+        </div>
+
+     <div className='mt-[1em]'>
+      <p>specify your price</p>
+      <input onBlur={resetPrice} onChange={(event)=>{setcurrentPrice(Number(event.target.value));setPriceOption("");clearPricefilter()}} className='w-[9em] h-[3em] border-black border' title='price' type="text" />
+     </div>
+      </div>
+    </motion.div>
+    </ChakraProvider>
+
+  )
+}
+
+export default Popupfiltercomponent
