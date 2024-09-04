@@ -4,9 +4,7 @@ import localFont from 'next/font/local'
 import Filterbtn from "./Filterbtn"
 import Filterdrop from './Filterdrop'
 const shoptitlefont2 = localFont({src:"../../fonts/dd.woff2"})
-function Filters() {
-
-
+function Filters(){
   return (
     <div className='flex filters items-center lg:z-[3000000] sticky  z-[60] bg-white  h-[3.9875em]  top-[3em] px-[1em] gap-x-[2em] w-full'>
       <Filterbtn/>
@@ -16,7 +14,6 @@ function Filters() {
         <p>Bracelets</p>
         <p>Rings</p>
         <p>Necklaces</p>
-
        </div>
     </div>
   )

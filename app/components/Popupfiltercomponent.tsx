@@ -5,6 +5,7 @@ import {Switch,ChakraProvider} from "@chakra-ui/react"
 import {AnimatePresence, motion} from "framer-motion"
 const font = localFont({src:"../fonts/dd.woff2"});
 
+
 const smallfont = localFont({src:"../fonts/smallfontforbrondon.woff2"});
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import globalStore from '../store/globalstore'
@@ -18,17 +19,17 @@ function Popupfiltercomponent() {
   const clearPricefilter=()=>{
     params.delete('fromPrice');
     params.delete('Underprice');
-    replace(`?${params}`)
+    replace(`?${params}`,{scroll:false})
   }
  const handleSortby=(id:string)=>{
      if(presentlyCheckedSortoption==id){
       setOption("");
       params.delete('sortBy');
-      replace(`?${params}`)
+      replace(`?${params}`,{scroll:false})
      }else {
       setOption(id);
        params.set('sortBy',id);
-       replace(`?${params}`)
+       replace(`?${params}`,{scroll:false})
     }
  }
  const resetPrice=()=>{
@@ -42,26 +43,26 @@ function Popupfiltercomponent() {
     if(id!=="morePrice"){
       params.set('Underprice',String(currentSetprice));
       params.delete('fromPrice')
-      replace(`?${params}`)
+      replace(`?${params}`,{scroll:false})
     }else{
       params.set('fromPrice',String(currentSetprice));
       params.delete('Underprice')
-      replace(`?${params}`)
+      replace(`?${params}`,{scroll:false})
     }
   }else{
     setPriceOption("");
     params.delete('Underprice');
     params.delete('fromPrice');
-    replace(`?${params}`)
+    replace(`?${params}`,{scroll:false})
   }
  }
 const handleAvailability = ()=>{
   if(params.has('availability')){
     params.delete('availability');
-    replace(`?${params}`);
+    replace(`?${params}`,{scroll:false});
   }else{
- params.set('availability',"new");
- replace(`?${params}`)}
+ params.set('availability',"in-stock");
+ replace(`?${params}`,{scroll:false})}
 }
 const readUrlAndSetButtonsActive =()=>{
 
@@ -111,15 +112,15 @@ const {setFilterVisiblity} = useContext(globalStore)
       <div className='w-full mt-[3em] py-[1em] border-t border-black border-b'>
         <p>Availability</p>
         <div className='flex mt-[1em] items-center gap-[0.75em]'>
-          <Switch isChecked={params.has('availability')} onChange={handleAvailability} id='email-alerts' />
-          <p>New Arrivals</p>
+          <Switch colorScheme='purple' isChecked={params.has('availability')} onChange={handleAvailability} id='email-alerts' />
+          <p>In-Stock</p>
         </div>
 
 
       </div>
       <div className='w-full py-[1em]  border-black border-b'>
         <p>SortBy</p>
-        <div className='flex mt-[1em] items-center gap-[0.75em]'>
+        <div className='flex mt-[0.6em] items-center gap-[0.75em]'>
             <input onChange={()=>handleSortby("hightolow")} id="hightolow" checked={presentlyCheckedSortoption=="hightolow"}  title='price' type="checkbox"  />
           <p>Price:High to Low</p>
         </div>
@@ -127,11 +128,12 @@ const {setFilterVisiblity} = useContext(globalStore)
         <input onChange={()=>handleSortby("lowtohigh")} id="lowtohigh" checked={presentlyCheckedSortoption=="lowtohigh"}  title='price' type="checkbox"  />
         <p>Price:Low to high</p>
         </div>
+       
 
       </div>
-      <div className='w-full py-[1em]  border-black border-b'>
+      <div className='w-full py-[1em]'>
         <p>Specify Price</p>
-        <div className='flex mt-[1em] items-center gap-[0.75em]'>
+        <div className='flex mt-[0.6em] items-center gap-[0.75em]'>
             <input onChange={()=>handlePrice("underPrice")} checked={presentlyCheckedPriceoption=="underPrice"}  title='price' type="checkbox"  />
           <p>Under &#8358;{currentSetprice}</p>
         </div>
@@ -142,9 +144,12 @@ const {setFilterVisiblity} = useContext(globalStore)
 
      <div className='mt-[1em]'>
       <p>specify your price</p>
-      <input onBlur={resetPrice} onChange={(event)=>{setcurrentPrice(Number(event.target.value));setPriceOption("");clearPricefilter()}} className='w-[9em] h-[3em] border-black border' title='price' type="text" />
+      <input onBlur={resetPrice} onChange={(event)=>{setcurrentPrice(Number(event.target.value));setPriceOption("");clearPricefilter()}} className='w-[9em] h-[3em] mt-[.8em] outline-none border-black border' title='price' type="text" />
      </div>
       </div>
+      <button onClick={()=>setFilterVisiblity(false)} type="button" className={`${font.className} uppercase text-white w-full h-[2.875em] hover:bg-[#626262] bg-black`}>
+        view all *filteredproductsnumber*
+      </button>
     </motion.div>
     </ChakraProvider>
 
