@@ -10,7 +10,7 @@ function Availablefiltbtn({filter,keyVal}:{filter:string,keyVal:string}) {
   const params = new URLSearchParams(searchparams);
   const {replace} = useRouter()
   const handleDeletefromUrl = ()=>{
-   params.delete(keyVal,filter)
+   params.delete(String(keyVal),String(filter))
     replace(`?${params}`,{scroll:false})
   }
   return (
