@@ -19,7 +19,7 @@ for(const [dude,value] of params.entries()){
 
 
   return (
-    <div className='px-[1em] md:pb-[1em] filters items-center mt-[1em] w-full'>
+    <div className='md:pb-[1em] filters items-center mt-[1em] w-full'>
       <Filterbtn presentFilterCount={presentfilters.length} />
     <div className='flex md:flex-nowrap flex-wrap py-[.8em] gap-[.6em] mt-[.2em]'>{presentfilters.map((filter)=>{
       return <Availablefiltbtn keyVal={filter.query} key={filter.value} filter={filter.value}/>
