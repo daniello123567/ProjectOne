@@ -20,7 +20,7 @@ function Products() {
   console.log(data,"here in products");
 
   return (
-    <div className='grid md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[0.3rem] pt-[3em] grid-cols-2 grid-rows-2'>
+    <div className='grid md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[0.3rem] pt-[2.6em] grid-cols-2 grid-rows-2'>
       {data&&data.map((product:product)=>{
         return <Product Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
       })}

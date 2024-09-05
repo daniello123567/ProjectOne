@@ -11,6 +11,7 @@ import supabase from '@/public/supabase'
 import { useSearchParams } from 'next/navigation'
 import Mobile from './Mobileheader'
 import { useQuery } from '@tanstack/react-query'
+import Heromsg from './Heromsg'
 
 function App() {
 

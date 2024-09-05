@@ -104,12 +104,12 @@ const {setFilterVisiblity} = useContext(globalStore)
   return (
 
     <ChakraProvider>
-    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 top-[1.5rem] z-[100000] h-[100vh]`}>
+    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} pt-[2em] text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 top-[1.5rem] z-[100000] h-[100vh]`}>
       <div className='flex  justify-between'>
         <p className={`${font.className} text-[1.25em]`}>Filters</p>
         <button onClick={()=>setFilterVisiblity(false)} type="button" className=''>&#10005;</button>
       </div>
-      <div className='w-full mt-[3em] py-[1em] border-t border-black border-b'>
+      <div className='w-full mt-[.4em] py-[1em] border-t border-black border-b'>
         <p>Availability</p>
         <div className='flex mt-[1em] items-center gap-[0.75em]'>
           <Switch colorScheme='purple' isChecked={params.has('availability')} onChange={handleAvailability} id='email-alerts' />

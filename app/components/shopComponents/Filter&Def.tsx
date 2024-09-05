@@ -19,17 +19,12 @@ for(const [dude,value] of params.entries()){
 
 
   return (
-    <div className='md:flex md:flex-col px-[1em] md:border-b md:pb-[1em] filters items-center mt-[1em] w-full'>
+    <div className='px-[1em] md:pb-[1em] filters items-center mt-[1em] w-full'>
       <Filterbtn presentFilterCount={presentfilters.length} />
     <div className='flex md:flex-nowrap flex-wrap py-[.8em] gap-[.6em] mt-[.2em]'>{presentfilters.map((filter)=>{
       return <Availablefiltbtn keyVal={filter.query} key={filter.value} filter={filter.value}/>
     })}</div>
-      <div className={`${shoptitlefont2.className} underline  md:mx-auto hidden uppercase gap-[1.4em] text-[0.875em] font-[500] tracking-[1px] sm:flex items-center`}>
-        <p>Earrings</p>
-        <p>Bracelets</p>
-        <p>Rings</p>
-        <p>Necklaces</p>
-       </div>
+
     </div>
   )
 }
