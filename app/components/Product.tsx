@@ -3,12 +3,13 @@ import React from 'react'
 import 'swiper/css'
 import Imagecarousel from './Productcomponents/Imagecarousel';
 import Info from './Productcomponents/Info';
-const images = ["https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/ALLTHEEr.png","https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/ALLTHEEr.png"]
-function Product(){
+import Wishlistbtn from './Productcomponents/wishlistbtn';
+function Product({Name,Color,Price,images}:{Name:string,Color:string,Price:number,images:string[]}){
   return (
-    <div className={` w-full bg-[#F5F5F5] daddy:h-[32.9104375em] h-[21.8979375em]`}>
+    <div className={` relative w-full bg-[#F5F5F5] daddy:h-[32.9104375em] h-[21.8979375em]`}>
        <Imagecarousel arrayofImages={images}/>
-       <Info name='Earring' color='silver' price='30,000'/>
+       <Info name={Name} color={Color} price={Price}/>
+       <Wishlistbtn/>
     </div>
   )
 }

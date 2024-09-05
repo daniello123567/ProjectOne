@@ -7,8 +7,8 @@
 .header2{@apply bg-white border-t-white z-[9999] fixed  px-[1em]  py-[0.6875em] md:h-[3.625em] lg:h-[6.9248125em] border-b border-b-black text-center h-[3.625em] top-0 left-0 w-full }
 .logo{@apply cursor-pointer py-[1em] md:hidden lg:hidden text-[0.8125em] tracking-[1.3px] font-[800]}
 .logo2{@apply border-none cursor-pointer lg:text-[1em] lg:mx-[20em] py-[1em] hidden md:block md:h-auto lg:block text-[0.8125em] tracking-[1.3px] font-[800]}
-.appBody{@apply lg:mt-[6.9em] md:mt-[3.6em] mt-[6.5em]}
-.hero{@apply lg:h-[35.6074375em] w-full md:h-[28.2831875em] h-[36.0615em]}
+.appBody{@apply lg:mt-[3.9em] md:mt-[3.2em] mt-[2.5em]}
+.hero{@apply flex items-end bg-blue-500 lg:h-[35.6074375em] w-full md:h-[28.2831875em] h-[36.0615em]}
 .helpful-links{@apply hidden  uppercase tracking-[1.3px] text-[0.8125em] items-center w-full justify-center gap-[0.5em] lg:flex h-[3em] }
 .helpful-links p{@apply py-[0.5em] font-[500] tracking-[1px] text-[0.875em] px-[0.75em]}
 .swiper{@apply w-full h-full}
