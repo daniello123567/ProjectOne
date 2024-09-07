@@ -12,10 +12,15 @@ import { useSearchParams } from 'next/navigation'
 import Mobile from './Mobileheader'
 import { useQuery } from '@tanstack/react-query'
 import Heromsg from './Heromsg'
+import BagShop from './Bag'
 
 function App() {
 
   const [showFilter, setFilterVisiblity] = useState(false);
+  const [showBag,setBagVisibility] = useState<boolean>(false);
+  const [activePage,setactivePage] = useState<string>('');
+
+  const [Bag,setBag] = useState<any[]>([])
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -23,7 +28,12 @@ function App() {
   const fromPrice = params.get('fromPrice');
   const Underprice = params.get('Underprice');
   const ProductType = params.getAll("Product-type");
-
+  useEffect(()=>{
+    const savedBagProducts = localStorage.getItem('Bag');
+    if(savedBagProducts){
+     setBag(JSON.parse(savedBagProducts));
+    }
+   },[])
 
   const checkForAvailabilty = (): string => {
     if (availabilty && availabilty == "in-stock") {
@@ -73,7 +83,7 @@ const {isPending,error,data} = useQuery({
   queryFn:()=>fetchproducts()
 });
   return (
-    <globalStore.Provider value={{setFilterVisiblity,data }} >
+    <globalStore.Provider value={{setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage }} >
       <div className='appBody'>
         <Mobile/>
         <Hero />
@@ -82,6 +92,7 @@ const {isPending,error,data} = useQuery({
         <Shop />
         <AnimatePresence>
           {showFilter && <Popupfiltercomponent />}
+          {showBag && <BagShop/>}
         </AnimatePresence>
       </div>
     </globalStore.Provider>

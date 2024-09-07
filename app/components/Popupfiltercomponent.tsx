@@ -100,11 +100,11 @@ const animationVariants = {
   },
  }
 }
-const {setFilterVisiblity} = useContext(globalStore)
+const {setFilterVisiblity} = useContext(globalStore);
   return (
 
     <ChakraProvider>
-    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} pt-[2em] text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 top-[1.5rem] z-[100000] h-[100vh]`}>
+    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} pt-[2em] accent-black text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 h-max z-[100000] h-[100vh]`}>
       <div className='flex  justify-between'>
         <p className={`${font.className} text-[1.25em]`}>Filters</p>
         <button onClick={()=>setFilterVisiblity(false)} type="button" className=''>&#10005;</button>
@@ -118,10 +118,10 @@ const {setFilterVisiblity} = useContext(globalStore)
 
 
       </div>
-      <div className='w-full py-[1em]  border-black border-b'>
+      <div className='w-full py-[1em]   border-black border-b'>
         <p>SortBy</p>
         <div className='flex mt-[0.6em] items-center gap-[0.75em]'>
-            <input onChange={()=>handleSortby("hightolow")} id="hightolow" checked={presentlyCheckedSortoption=="hightolow"}  title='price' type="checkbox"  />
+            <input className='accent-black' onChange={()=>handleSortby("hightolow")} id="hightolow" checked={presentlyCheckedSortoption=="hightolow"}  title='price' type="checkbox"  />
           <p>Price:High to Low</p>
         </div>
         <div className='flex items-center gap-[0.75em]'>

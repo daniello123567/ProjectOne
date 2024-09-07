@@ -5,16 +5,18 @@ import localFont from 'next/font/local'
 import { useRouter, useSearchParams } from 'next/navigation';
 const shoptitlefont1= localFont({src:"../../fonts/smallfontforbrondon.woff2"});
 
-function Availablefiltbtn({filter,keyVal}:{filter:string,keyVal:string}) {
+function Availablefiltbtn({filter,keyVal}:{filter:string,keyVal:string}){
   const searchparams = useSearchParams();
   const params = new URLSearchParams(searchparams);
-  const {replace} = useRouter()
+  const {replace} = useRouter();
   const handleDeletefromUrl = ()=>{
-   params.delete(String(keyVal),String(filter))
+   params.delete(String(keyVal),String(filter));
     replace(`?${params}`,{scroll:false})
+  console.log(keyVal,'of',filter,'deleted');
+
   }
   return (
-    <button onClick={handleDeletefromUrl} type='button' className={` ${shoptitlefont1.className} h-[1.875em] flex items-center text-[0.75em] font-[400] rounded-full w-max border border-black outline-1 outline-black py-[.25em] px-[0.5em]`}>{filter}
+    <button onClick={handleDeletefromUrl} type='button' className={`${shoptitlefont1.className} h-[1.875em] flex items-center text-[0.75em] font-[400] rounded-full w-max border border-black outline-1 outline-black py-[.25em] px-[0.5em]`}>{filter}
         <Image className='w-[1em] h-[1em]' src="/Cross.svg" alt='cancel' width={500} height={500}/>
       </button>
   )
