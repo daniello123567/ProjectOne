@@ -2,8 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 function wishlistbtn() {
   return (
-    <div className='w-[2em] flex justify-center items-center rounded-full h-[2em] bg-white z-[2000] absolute top-[.4em] right-[.4em] '>
-        <Image alt='wishlist.svg' className='h-[1em] w-[1em] ' width={500} height={500} src="/headericons/Wishlist.svg"/>
+    // WISH LIST BUTTON SHUD BE BESIDE THE NAME OF EACH PRODUCTS
+    <div className='w-[1.5em] flex justify-center items-center rounded-full h-[1.5em]  z-[2000] absolute bottom-[7em] right-[.4em] '>
+        <Image alt='wishlist.svg' className='h-[1em] w-[1em]' width={500} height={500} src="/headericons/Wishlist.svg"/>
        </div>
   )
 }

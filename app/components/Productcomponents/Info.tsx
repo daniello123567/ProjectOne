@@ -4,13 +4,13 @@ import localFont from 'next/font/local'
 import globalStore from '@/app/store/globalstore';
 const smallfont = localFont({src:"../../fonts/smallfontforbrondon.woff2"})
 const font= localFont({src:"../../fonts/dd.woff2"});
-type prop = {name:string,price:number,color:string,image:string,idOfProduct:string,Tag:string}
+type prop = {Amt_in_stock:number,name:string,price:number,color:string,image:string,idOfProduct:string,Tag:string}
 const formatNumber = (number:number)=>{
 
 return number.toLocaleString();
 }
 
-function Info({name,price,color,image,idOfProduct,Tag}:prop) {
+function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
   const checkIfProductisInBagAlready=():boolean=>{
     const response = Bag.some((product:any)=>{
        return product.id === idOfProduct
@@ -20,7 +20,6 @@ function Info({name,price,color,image,idOfProduct,Tag}:prop) {
   const {Bag,setBag} = useContext(globalStore)
   const addProductToBag = ()=>{
     if(Tag&&Tag.toLowerCase()!=="out-of-stock"){
-
 
    if(checkIfProductisInBagAlready()){
     const newBagproducts = Bag.filter((product:any)=>product.id !==idOfProduct);
@@ -33,7 +32,8 @@ function Info({name,price,color,image,idOfProduct,Tag}:prop) {
       price:price,
       color:color,
       quantity:1,
-      image:image
+      image:image,
+      Amt_in_stock:Amt_in_stock
     }
      setBag([...Bag,newBagProduct]);
      localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))

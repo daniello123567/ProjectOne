@@ -13,15 +13,16 @@ Price:number;
 Tag:string;
 created_at:string;
 id:string;
-Quantity:number
+Amt_in_stock:number
 }
 }
 function Products() {
   const {data} = useContext(globalStore);
+
   return (
     <div className='grid md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[.7em] pt-[2.6em] grid-cols-2 grid-rows-2'>
       {data&&data.map((product:product)=>{
-        return <Product Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
+        return <Product Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
       })}
     </div>
   )
