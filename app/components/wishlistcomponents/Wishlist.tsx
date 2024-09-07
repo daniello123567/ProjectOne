@@ -10,7 +10,7 @@ function Wishlist() {
   const {wishlist} = useContext(globalStore);
   const fetchProductsBasedOnId = async ()=>{
     const idOfwishes = wishlist.map((product:product)=>{
-      return product.id;
+      if(product.id)return product.id;
     });
     const {data,error} = await supabase.from('jewelries').select('*').in("id",[...idOfwishes]);
    return data;
@@ -18,7 +18,7 @@ function Wishlist() {
   }
 
 const {isPending,error,data} = useQuery({
-    queryKey:['wishlist'],
+    queryKey:['wishlist',wishlist],
     queryFn:()=>fetchProductsBasedOnId()
   });
 const WishesFromDB = ()=>{
@@ -31,7 +31,7 @@ const WishesFromDB = ()=>{
   return (
     <div className='w-full overflow-auto p-[1em] h-full'>
       <p className={`${font.className} text-[2em] font-[600]`}>WISHLIST</p>
-      <div className='grid md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[.7em]  grid-cols-2 grid-rows-2'>
+      <div className='grid px-[1em] gap-[.7em]  grid-cols-2 grid-rows-2'>
         {isPending?'loading':<WishesFromDB/>}
       </div>
     </div>

@@ -2,7 +2,6 @@
 import React, { useContext } from 'react'
 import Image from 'next/image'
 import globalStore from '@/app/store/globalstore'
-import Product from '../Product'
 function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
   const {wishlist,setWishlist} = useContext(globalStore)
   const isInwishlistAlready = wishlist.some((product:product)=>product.id==idOfProduct);
