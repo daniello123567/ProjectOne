@@ -19,7 +19,7 @@ function App() {
   const [showFilter, setFilterVisiblity] = useState(false);
   const [showBag,setBagVisibility] = useState<boolean>(false);
   const [activePage,setactivePage] = useState<string>('');
-
+  const [wishlist,setWishlist] = useState<any[]>([])
   const [Bag,setBag] = useState<any[]>([])
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
@@ -83,7 +83,7 @@ const {isPending,error,data} = useQuery({
   queryFn:()=>fetchproducts()
 });
   return (
-    <globalStore.Provider value={{setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage }} >
+    <globalStore.Provider value={{setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage,wishlist,setWishlist }} >
       <div className='appBody'>
         <Mobile/>
         <Hero />
