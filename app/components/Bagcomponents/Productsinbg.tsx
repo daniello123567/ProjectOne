@@ -31,6 +31,12 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price}:BagProduct) {
     setBag([...updatedArr]);
     localStorage.setItem("Bag",JSON.stringify([...updatedArr]))
   }}
+  const removeProductfromBag = ()=>{
+    const UpdatedData = Bag.filter((product:BagPro)=>product.id !==id);
+   setBag([...UpdatedData]);
+   localStorage.setItem("Bag",JSON.stringify([...UpdatedData]));
+
+  }
   return (
     <div className='bg-white gap-[1em] md:h-[13.03125em] flex p-[1em] lg:h-[8.1875em] border-b border-b-[#ededed] h-[8.1875em] w-full'>
            <div className='bg-blue-600 h-full w-[30%]'>
@@ -38,18 +44,18 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price}:BagProduct) {
            </div>
            <div className=' flex flex-col justify-between h-full w-[70%]'>
             <div className='flex w-full justify-between'>
-              <p className={`${Active.className} font-[500]`}>{Name}</p> <p className={`${nonActive.className} font-[400] text-[0.875em]`}>&#8358;{price.toLocaleString()}</p>
+              <p className={`${Active.className} text-black font-[500]`}>{Name}</p> <p className={`${nonActive.className} font-[400] text-[0.875em]`}>&#8358;{price.toLocaleString()}</p>
               </div>
               <p className={`${nonActive.className} text-[0.875em] font-[400]`}>Color: {Color}</p>
               <p className={`${nonActive.className} text-[0.875em] font-[400] text-[#A36200]`}>Only 5 left in stock</p>
             <div className='flex w-full items-center justify-between'>
-              <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[5em] h-[1.8em]`}>
+              <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[5em] h-[1.5em]`}>
                 <button className={`${quantity==1&&'cursor-not-allowed opacity-15'}`} onClick={decreaseQty}>&#8722;</button>
                 <p>{quantity}</p>
                 <button onClick={increaseQty}>&#43;</button>
               </div>
              <div className={`${nonActive.className} w-[1.5em] h-[1.5em] font-[400] text-[0.875em] underline`}>
-              <Image src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
+              <Image onClick={removeProductfromBag} src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
              </div>
             </div>
            </div>
