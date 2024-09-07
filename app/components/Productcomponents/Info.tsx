@@ -30,7 +30,8 @@ function Info({name,price,color,image,idOfProduct}:prop) {
       price:price,
       color:color,
       quantity:1,
-      image:image}
+      image:image
+    }
      setBag([...Bag,newBagProduct]);
      localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
 

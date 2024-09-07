@@ -11,7 +11,7 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price}:BagProduct) {
   const increaseQty = ()=>{
     const newArr = Bag.map((product:BagPro)=>{
        if(product.id===id){
-        return {id:product.id,quantity:product.quantity+=1,color:product.color,name:product.name,price:product.price}
+        return {...product,quantity:product.quantity+=1}
        }else{
         return product;
        }

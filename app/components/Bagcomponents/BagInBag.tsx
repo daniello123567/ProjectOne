@@ -7,9 +7,11 @@ declare global {type BagPro = {color:string,
   name: string,
   price: number,
   quantity: number
+
 }}
 function BagInBag() {
   const {Bag} = useContext(globalStore);
+ console.log(Bag);
 
   return (
     <div className='w-full h-full'>
