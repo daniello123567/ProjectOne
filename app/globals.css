@@ -12,5 +12,5 @@
 .helpful-links{@apply hidden  uppercase tracking-[1.3px] text-[0.8125em] items-center w-full justify-center gap-[0.5em] lg:flex h-[3em] }
 .helpful-links p{@apply py-[0.5em] font-[500] tracking-[1px] text-[0.875em] px-[0.75em]}
 .swiper{@apply w-full h-full}
-.swiper-pagination-bullet-active{@apply bg-black}
-.swiper-pagination-bullet{@apply h-full w-full}
+.swiper-pagination-bullet-active{@apply  z-[30000] bg-black}
+.swiper-pagination-bullet{@apply z-[300000] h-full w-full}
