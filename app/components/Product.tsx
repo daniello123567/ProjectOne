@@ -4,12 +4,12 @@ import 'swiper/css'
 import Imagecarousel from './Productcomponents/Imagecarousel';
 import Info from './Productcomponents/Info';
 import Wishlistbtn from './Productcomponents/wishlistbtn';
-function Product({Name,Color,Price,images,id}:{Name:string,Color:string,Price:number,id:string,images:string[]}){
+function Product({Name,Color,Price,images,id,Tag}:{Name:string,Color:string,Price:number,id:string,images:string[],Tag:string}){
   return (
     <div className={` relative w-full bg-[#F5F5F5] daddy:h-[32.9104375em] h-[21.8979375em]`}>
-       <Imagecarousel arrayofImages={images}/>
+       <Imagecarousel Tag={Tag} arrayofImages={images}/>
 
-       <Info idOfProduct={id} image={images[0]} name={Name} color={Color} price={Price}/>
+       <Info Tag={Tag} idOfProduct={id} image={images[0]} name={Name} color={Color} price={Price}/>
        <Wishlistbtn/>
     </div>
   )

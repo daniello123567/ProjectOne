@@ -4,13 +4,13 @@ import localFont from 'next/font/local'
 import globalStore from '@/app/store/globalstore';
 const smallfont = localFont({src:"../../fonts/smallfontforbrondon.woff2"})
 const font= localFont({src:"../../fonts/dd.woff2"});
-type prop = {name:string,price:number,color:string,image:string,idOfProduct:string}
+type prop = {name:string,price:number,color:string,image:string,idOfProduct:string,Tag:string}
 const formatNumber = (number:number)=>{
 
 return number.toLocaleString();
 }
 
-function Info({name,price,color,image,idOfProduct}:prop) {
+function Info({name,price,color,image,idOfProduct,Tag}:prop) {
   const checkIfProductisInBagAlready=():boolean=>{
     const response = Bag.some((product:any)=>{
        return product.id === idOfProduct
@@ -19,6 +19,9 @@ function Info({name,price,color,image,idOfProduct}:prop) {
  }
   const {Bag,setBag} = useContext(globalStore)
   const addProductToBag = ()=>{
+    if(Tag&&Tag.toLowerCase()!=="out-of-stock"){
+
+
    if(checkIfProductisInBagAlready()){
     const newBagproducts = Bag.filter((product:any)=>product.id !==idOfProduct);
     setBag([...newBagproducts]);
@@ -34,8 +37,8 @@ function Info({name,price,color,image,idOfProduct}:prop) {
     }
      setBag([...Bag,newBagProduct]);
      localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
-
    }
+  }
 
    }
 
@@ -47,7 +50,7 @@ function Info({name,price,color,image,idOfProduct}:prop) {
     <p className={`${smallfont.className} font-[400] text-[1rem]`}>&#8358;{formatNumber(price)}</p>
     <div className='bg-gray-500 w-[1.125em] border border-[#686868] h-[1.125em] rounded-full'></div>
     <p className={`${smallfont.className} text-[0.75em] font-[400]`}>{color}</p>
-    <button onClick={addProductToBag} className={`${font.className} lg:hidden mt-[.5em] py-[0.35em] px-[0.75em] w-full  font-[500]  tracking-[1px] text-[0.75em] rounded-full border border-[#EDEDED]`} type='button'>{checkIfProductisInBagAlready()?'ADDED TO BAG' :'ADD TO BAG'}</button>
+    <button onClick={addProductToBag} className={`${font.className} ${Tag.toLowerCase()=="out-of-stock" && "opacity-50"}  lg:hidden mt-[.5em] py-[0.35em] px-[0.75em] w-full  font-[500]  tracking-[1px] text-[0.75em] rounded-full border border-[#EDEDED]`} type='button'>{checkIfProductisInBagAlready()?'ADDED TO BAG' :'ADD TO BAG'}</button>
    </div>
   )
 }
