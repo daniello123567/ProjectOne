@@ -30,7 +30,7 @@ function BagShop() {
   const {setBagVisibility,activePage,setactivePage} = useContext(globalStore);
 
   return (
-    <div className='fixed bottom-0 z-[99999] lg:pt-0 pt-[4em] bg-white/50  backdrop-blur-sm w-full h-screen'>
+    <div className='fixed top-0 bottom-0 z-[99999] lg:pt-0 pt-[4em] bg-white/50  backdrop-blur-sm w-full h-screen'>
       <motion.div exit="exit" initial="stayDown" variants={variants} animate="comeUp" className='bg-white lg:w-[40%] lg:h-full lg:rounded-none border-t  pt-[4em] relative rounded-t-[1em] h-full w-full'>
         <Image onClick={()=>setBagVisibility(false)} className='w-[1.5em] cursor-pointer absolute top-[1em] right-[1em]  h-[1.5em]' src="/Cancel.svg" width={500} height={500} alt='cancel'/>
         <div className='w-full flex border-b border-b-black justify-between h-[1.84375em]'>

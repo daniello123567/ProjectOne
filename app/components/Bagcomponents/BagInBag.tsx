@@ -12,7 +12,7 @@ function BagInBag() {
   const {Bag} = useContext(globalStore);
 
   return (
-    <div className='w-full h-full p-[1em] '>
+    <div className='w-full h-full'>
          {Bag.length !==0 ? Bag.map((productBag:BagPro)=>{
          return <Productsinbg id={productBag.id}  price={productBag.price} Color={productBag.color} quantity={productBag.quantity} Name={productBag.name} imageThubnail={productBag.image} key={productBag.id} />
          }):"no pro yet"}

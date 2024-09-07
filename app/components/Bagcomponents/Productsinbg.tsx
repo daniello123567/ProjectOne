@@ -40,14 +40,17 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price}:BagProduct) {
             <div className='flex w-full justify-between'>
               <p className={`${Active.className} font-[500]`}>{Name}</p> <p className={`${nonActive.className} font-[400] text-[0.875em]`}>&#8358;{price.toLocaleString()}</p>
               </div>
-              <p className={`${nonActive.className} text-[0.875em] font-[400]`}>color: {Color}</p>
-            <div className='flex w-full justify-between'>
-              <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[4em] h-[1.5em]`}>
-                <button className={`${quantity==1&&'cursor-not-allowed opacity-15'}`} onClick={decreaseQty}>-</button>
+              <p className={`${nonActive.className} text-[0.875em] font-[400]`}>Color: {Color}</p>
+              <p className={`${nonActive.className} text-[0.875em] font-[400] text-[#A36200]`}>Only 5 left in stock</p>
+            <div className='flex w-full items-center justify-between'>
+              <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[5em] h-[1.8em]`}>
+                <button className={`${quantity==1&&'cursor-not-allowed opacity-15'}`} onClick={decreaseQty}>&#8722;</button>
                 <p>{quantity}</p>
-                <button onClick={increaseQty}>+</button>
+                <button onClick={increaseQty}>&#43;</button>
               </div>
-             <p className={`${nonActive.className} font-[400] text-[0.875em] underline`}>Remove</p>
+             <div className={`${nonActive.className} w-[1.8em] h-[1.8em] font-[400] text-[0.875em] underline`}>
+              <Image src="/delBtn.svg" className='w-full h-full' width={500} height={500} alt='delbtn' />
+             </div>
             </div>
            </div>
      </div>
