@@ -49,7 +49,7 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price}:BagProduct) {
                 <button onClick={increaseQty}>&#43;</button>
               </div>
              <div className={`${nonActive.className} w-[1.8em] h-[1.8em] font-[400] text-[0.875em] underline`}>
-              <Image src="/delBtn.svg" className='w-full h-full' width={500} height={500} alt='delbtn' />
+              <Image src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
              </div>
             </div>
            </div>
