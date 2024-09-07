@@ -48,7 +48,7 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
     <div className='w-full bg-white flex flex-col gap-[.1em] pt-[.7em] h-[40%] '>
     <div className='w-full flex pr-[.5em] justify-between'>
       <p className={`${font.className} text-black font-[500] hover:text-[#626262]`}>{name}</p>
-      <Wishlistbtn/>
+      <Wishlistbtn idOfProduct={idOfProduct} image={image} Amt_in_stock={Amt_in_stock} name={name} color={color} price={price}/>
     </div>
     <p className={`${smallfont.className} font-[400] text-[1rem]`}>&#8358;{formatNumber(price)}</p>
     <div className='bg-gray-500 w-[1.125em] border border-[#686868] h-[1.125em] rounded-full'></div>

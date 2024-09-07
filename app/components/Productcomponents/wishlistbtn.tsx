@@ -2,9 +2,12 @@
 import React, { useContext } from 'react'
 import Image from 'next/image'
 import globalStore from '@/app/store/globalstore'
-function Wishlistbtn() {
+import Product from '../Product'
+function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
   const {wishlist,setWishlist} = useContext(globalStore)
-  const addProductToWishlist = ({idOfProduct,name,price,color,image,Amt_in_stock}:any)=>{
+  const isInwishlistAlready = wishlist.some((product:product)=>product.id==idOfProduct);
+  const addProductToWishlist = ()=>{
+    if(!isInwishlistAlready){
      let newWish = {
       id:idOfProduct,
       name:name,
@@ -14,12 +17,24 @@ function Wishlistbtn() {
       image:image,
       Amt_in_stock:Amt_in_stock
     }
-     setWishlist([...wishlist,{}])
+     setWishlist([...wishlist,newWish]);
+     localStorage.setItem("Wishlist",JSON.stringify([...wishlist,newWish]));
+  }else {
+    const updatedWishes = wishlist.filter((product:product)=>product.id !==idOfProduct);
+    setWishlist([...updatedWishes]);
+    localStorage.setItem("Wishlist",JSON.stringify([...wishlist,updatedWishes]));
+
   }
+  }
+
   return (
     // WISH LIST BUTTON SHUD BE BESIDE THE NAME OF EACH PRODUCTS
     <div onClick={addProductToWishlist} className='w-[1.5em] flex justify-center items-center rounded-full h-[1.5em] '>
+        {isInwishlistAlready?
+        <Image alt='wishlisted.svg' className='h-[1em] w-[1em]' width={500} height={500} src="Wishlisted.svg"/>
+        :
         <Image alt='wishlist.svg' className='h-[1em] w-[1em]' width={500} height={500} src="/headericons/Wishlist.svg"/>
+        }
        </div>
   )
 }
