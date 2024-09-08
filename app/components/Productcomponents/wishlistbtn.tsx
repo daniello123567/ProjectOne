@@ -2,6 +2,7 @@
 import React, { useContext } from 'react'
 import Image from 'next/image'
 import globalStore from '@/app/store/globalstore'
+import MyComponent from '../wishlistcomponents/Wishlisted'
 function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
   const {wishlist,setWishlist} = useContext(globalStore)
   const isInwishlistAlready = wishlist.some((product:product)=>product.id==idOfProduct);
@@ -30,7 +31,8 @@ function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProd
     // WISH LIST BUTTON SHUD BE BESIDE THE NAME OF EACH PRODUCTS
     <div onClick={addProductToWishlist} className='w-[1.5em] flex justify-center items-center rounded-full h-[1.5em] '>
         {isInwishlistAlready?
-        <Image alt='wishlisted.svg' className='h-[1em] w-[1em]' width={500} height={500} src="Wishlisted.svg"/>
+        <MyComponent/>
+        // <Image alt='wishlisted.svg' className='h-[1em] w-[1em]' width={500} height={500} src="Wishlisted.svg"/>
         :
         <Image alt='wishlist.svg' className='h-[1em] w-[1em]' width={500} height={500} src="/headericons/Wishlist.svg"/>
         }
