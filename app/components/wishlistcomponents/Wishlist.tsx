@@ -11,8 +11,8 @@ const font = localFont({ src: "../../fonts/KapraNeueW05-SemiBold.woff2" })
 function Wishlist() {
   const { wishlist } = useContext(globalStore);
   const fetchProductsBasedOnId = async () => {
-    const idOfwishes = wishlist.map((product: product) => {
-      if (product.id) return product.id;
+    const idOfwishes = wishlist.map((product:product) => {
+      if (product.id)return product.id;
     });
     const { data, error } = await supabase.from('jewelries').select('*').in("id", [...idOfwishes]);
     return data;

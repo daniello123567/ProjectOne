@@ -21,7 +21,7 @@ function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProd
   }else {
     const updatedWishes = wishlist.filter((product:product)=>product.id !==idOfProduct);
     setWishlist([...updatedWishes]);
-    localStorage.setItem("Wishlist",JSON.stringify([...wishlist,updatedWishes]));
+    localStorage.setItem("Wishlist",JSON.stringify([...updatedWishes]));
 
   }
   }
