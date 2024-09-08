@@ -89,7 +89,7 @@ const {isPending,error,data} = useQuery({
 });
   return (
     <globalStore.Provider value={{setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage,wishlist,setWishlist }} >
-      <div className='appBody'>
+      <div className={` appBody`}>
         <Mobile/>
         <Hero />
         <Notification/>
