@@ -12,13 +12,14 @@ return number.toLocaleString();
 }
 
 function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
+  const {Bag,setBag} = useContext(globalStore)
+
   const checkIfProductisInBagAlready=():boolean=>{
     const response = Bag.some((product:any)=>{
        return product.id === idOfProduct
      });
     return response;
  }
-  const {Bag,setBag} = useContext(globalStore)
   const addProductToBag = useCallback(()=>{
     if(Tag&&Tag.toLowerCase()!=="out-of-stock"){
    if(checkIfProductisInBagAlready()){

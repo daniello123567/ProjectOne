@@ -11,13 +11,14 @@ import supabase from '@/public/supabase'
 import { useSearchParams } from 'next/navigation'
 import Mobile from './Mobileheader'
 import { useQuery } from '@tanstack/react-query'
-import Heromsg from './Heromsg'
 import BagShop from './Bag'
+import SearchComponent from './search/search'
 
 function App() {
 
   const [showFilter, setFilterVisiblity] = useState(false);
   const [showBag,setBagVisibility] = useState<boolean>(false);
+  const [showSearch,setSearchVisible] = useState<boolean>(false);
   const [activePage,setactivePage] = useState<string>('');
   const [wishlist,setWishlist] = useState<any[]>([])
   const [Bag,setBag] = useState<any[]>([])
@@ -88,7 +89,7 @@ const {isPending,error,data} = useQuery({
   queryFn:()=>fetchproducts()
 });
   return (
-    <globalStore.Provider value={{setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage,wishlist,setWishlist }} >
+    <globalStore.Provider value={{setSearchVisible,setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage,wishlist,setWishlist }} >
       <div className={` appBody`}>
         <Mobile/>
         <Hero />
@@ -98,6 +99,7 @@ const {isPending,error,data} = useQuery({
         <AnimatePresence>
           {showFilter && <Popupfiltercomponent />}
           {showBag && <BagShop/>}
+          {showSearch&&<SearchComponent/>}
         </AnimatePresence>
       </div>
     </globalStore.Provider>
