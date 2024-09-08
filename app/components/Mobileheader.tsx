@@ -16,7 +16,7 @@ function Mobileheader() {
     <div className='icons gap-[1em] flex'>
     <Image className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Search.svg" alt='menu' width={500} height={500}/>
     <div className='flex relative'>
-    {wishlist.length !==0&&<div className={`${font.className} w-[.3em] absolute flex justify-center items-center text-[0.75em] p-[0.75em] text-white left-[.7em] top-[-.8em] h-[.3em] bg-black rounded-full`}>{wishlist.length}</div>}
+    {wishlist.length !==0&&<div className={`${font.className} w-[.2em] absolute flex justify-center items-center text-[0.75em] p-[0.75em] text-white left-[.9em] top-[-.9em] h-[.2em] bg-black rounded-full`}>{wishlist.length}</div>}
     <Image onClick={()=>{setBagVisibility(true);setactivePage("Wishlist")}} className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Wishlist.svg" alt='menu' width={500} height={500}/>
     </div>
 

@@ -8,6 +8,7 @@ import Wishlistskeleton from './Wishlistskeleton'
 import Product from '../Product'
 import Empty from './Empty'
 const font = localFont({ src: "../../fonts/KapraNeueW05-SemiBold.woff2" })
+const font2 = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
 function Wishlist() {
   const { wishlist } = useContext(globalStore);
   const fetchProductsBasedOnId = async () => {
@@ -23,18 +24,21 @@ function Wishlist() {
     queryFn: () => fetchProductsBasedOnId()
   });
   const WishesFromDB = () => {
-    return <>
-      {data?.length != 0 ? data?.map((product:product) => {
+    return <div className='grid w-full gap-[.7em] h-full  grid-cols-2 grid-rows-2'>
+      {data?.map((product:product) => {
         return <Product key={product.id} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} images={product.ImagesUrl} id={product.id} Price={product.Price} Color={product.Color} Name={product.Name} />
-      }) : <Empty/>}
-    </>
+}) }
+    </div>
   }
   return (
-    <div className='w-full overflow-auto p-[1em] h-full'>
-      <p className={`${font.className} text-[2em] font-[600]`}>WISHLIST</p>
-      <div className='grid  gap-[.7em]  grid-cols-2 grid-rows-2'>
-        {isPending ? <Wishlistskeleton/> : <WishesFromDB />}
-      </div>
+    <div className='w-full overflow-auto pb-[2em]  p-[1em] h-full'>
+    <p className={`${font.className} text-[2em] font-[600]`}>WISHLIST</p>
+       <div>{isPending ? <Wishlistskeleton/>
+         : data?.length!==0?
+         <><WishesFromDB />
+         <p className={`${font2.className} font-[400] text-[1rem] text-center underline`}>Your Wishlist is currently {data?.length} in number. Feel free to add to bag anytime🤗</p>
+         </>:<Empty/>}
+    </div>
     </div>
   )
 }

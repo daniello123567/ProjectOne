@@ -9,9 +9,9 @@ function Emptybg() {
   setBagVisibility(false)
  }
   return (
-    <div className={`${font.className} px-[1em] w-full  pt-[2em] `}>
-      <p className={`${font.className} mb-[1em] text-[1.25em] text-center  text-[#101010]`}>Your Bag is Empty. Shop Our Fine Jewelries</p>
-     <button onClick={hideBag} type='button' className={`${font.className} text-[0.875em] active:text-white active:bg-black w-full border border-[#626262] h-[2.875em]`}>SHOP ALL</button>
+    <div className={`${font.className} flex items-center justify-center flex-col px-[1em] w-full  pt-[2em] `}>
+      <p className={`${font.className} mb-[1em] text-[1.25em] lg:text-[2rem] text-center  text-[#101010]`}>Your Bag is Empty. Shop Our Fine Jewelries</p>
+     <button onClick={hideBag} type='button' className={`${font.className} lg:w-[40%] text-[0.875em] active:text-white active:bg-black w-full border border-[#626262] h-[2.875em]`}>SHOP ALL</button>
       </div>
   )
 }

@@ -26,7 +26,7 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
           <Image className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>
         </SwiperSlide>
       })}
-          <div className='indicator z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>
+          {arrayofImages.length!==1&&<div className='indicator z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>}
 
     </Swiper>
    <button type="button" className={`${font.className} z-[20] transition-all duration-[120ms] ease-in-out opacity-0 group-hover:lg:opacity-100 bg-white rounded-full py-[0.25em] px-[0.75em] text-[0.75em] absolute bottom-2 font-[500] text-black tracking-[1px] right-2`}>ADD TO BAG</button>
