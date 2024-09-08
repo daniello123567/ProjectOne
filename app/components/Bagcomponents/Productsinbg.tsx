@@ -52,9 +52,9 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price,Amt_in_Bag}:Ba
               {quantity==Amt_in_Bag&&<p className={`${nonActive.className} text-[0.875em] font-[400] text-[#A36200]`}>Only {Amt_in_Bag} left in stock.</p>}
             <div className='flex w-full items-center justify-between'>
               <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[5em] h-[1.5em]`}>
-                <button type='button' className={`${quantity==1&&'cursor-not-allowed opacity-15'}`} onClick={decreaseQty}>&#8722;</button>
+                <button type='button' className={`${quantity==1&&'cursor-not-allowed opacity-15'} flex justify-center items-center h-full`} onClick={decreaseQty}>&#8722;</button>
                 <p>{quantity}</p>
-                <button className={`${quantity>=Amt_in_Bag&&"cursor-not-allowed pointer-events-none opacity-50"}`} type='button' onClick={increaseQty}>&#43;</button>
+                <button className={`${quantity>=Amt_in_Bag&&"cursor-not-allowed pointer-events-none opacity-50"} `} type='button' onClick={increaseQty}>&#43;</button>
               </div>
              <div className={`${nonActive.className} w-[1.5em] h-[1.5em] font-[400] text-[0.875em] underline`}>
               <Image onClick={removeProductfromBag} src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
