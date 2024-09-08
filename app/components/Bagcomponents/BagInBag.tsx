@@ -17,10 +17,10 @@ function BagInBag() {
   return (
     <div className='w-full lg:border lg:border-r overflow-auto  relative h-full'>
       <Littlemsg/>
-         {Bag.length !==0 ? <div className='w-full pb-[10em] h-full'>{Bag.map((productBag:BagPro)=>{
+         {Bag.length !==0 ? <div className='w-full relative pb-[10em] h-full'>{Bag.map((productBag:BagPro)=>{
          return <Productsinbg Amt_in_Bag={productBag.Amt_in_stock} id={productBag.id}  price={productBag.price} Color={productBag.color} quantity={productBag.quantity} Name={productBag.name} imageThubnail={productBag.image} key={productBag.id} />
-         })} </div>:<Emptybg/>}
-         {Bag.length!==0&&<EstimatedCheckout/>}
+         })} <EstimatedCheckout/></div>:<Emptybg/>}
+         {/* {Bag.length!==0&&<EstimatedCheckout/>} */}
         </div>
   )
 }
