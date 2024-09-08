@@ -32,7 +32,7 @@ function App() {
     const savedBagProducts = localStorage.getItem('Bag');
     const savedWishlist = localStorage.getItem("Wishlist");
     if(savedWishlist){
-      setWishlist([...JSON.parse(savedWishlist)])
+      setWishlist(JSON.parse(savedWishlist))
     }
 
     if(savedBagProducts){
