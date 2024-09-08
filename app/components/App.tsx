@@ -13,6 +13,7 @@ import Mobile from './Mobileheader'
 import { useQuery } from '@tanstack/react-query'
 import BagShop from './Bag'
 import SearchComponent from './search/search'
+import Lastpart from './footer/Lastpart'
 
 function App() {
 
@@ -101,6 +102,7 @@ const {isPending,error,data} = useQuery({
           {showBag && <BagShop/>}
           {showSearch&&<SearchComponent/>}
         </AnimatePresence>
+        <Lastpart/>
       </div>
     </globalStore.Provider>
   )
