@@ -14,15 +14,16 @@ import { useQuery } from '@tanstack/react-query'
 import BagShop from './Bag'
 import SearchComponent from './search/search'
 import Lastpart from './footer/Lastpart'
+import Footer1 from './footer/Footer1'
 
 function App() {
 
   const [showFilter, setFilterVisiblity] = useState(false);
-  const [showBag,setBagVisibility] = useState<boolean>(false);
-  const [showSearch,setSearchVisible] = useState<boolean>(false);
-  const [activePage,setactivePage] = useState<string>('');
-  const [wishlist,setWishlist] = useState<any[]>([])
-  const [Bag,setBag] = useState<any[]>([])
+  const [showBag, setBagVisibility] = useState<boolean>(false);
+  const [showSearch, setSearchVisible] = useState<boolean>(false);
+  const [activePage, setactivePage] = useState<string>('');
+  const [wishlist, setWishlist] = useState<any[]>([])
+  const [Bag, setBag] = useState<any[]>([])
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -30,17 +31,17 @@ function App() {
   const fromPrice = params.get('fromPrice');
   const Underprice = params.get('Underprice');
   const ProductType = params.getAll("Product-type");
-  useEffect(()=>{
+  useEffect(() => {
     const savedBagProducts = localStorage.getItem('Bag');
     const savedWishlist = localStorage.getItem('Wishlist');
-    if(savedWishlist){
-     setWishlist(JSON.parse(savedWishlist));
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
     }
 
-    if(savedBagProducts){
-     setBag(JSON.parse(savedBagProducts));
+    if (savedBagProducts) {
+      setBag(JSON.parse(savedBagProducts));
     }
-   },[])
+  }, [])
 
   const checkForAvailabilty = (): string => {
     if (availabilty && availabilty == "in-stock") {
@@ -73,36 +74,37 @@ function App() {
       return Number(Underprice)
     } else return 9000000000
   }
-  const handleProductType = ():string[]=>{
-    if(ProductType.length!==0){
+  const handleProductType = (): string[] => {
+    if (ProductType.length !== 0) {
       return ProductType;
-    }else return allDefaultProductTypes;
+    } else return allDefaultProductTypes;
   }
 
 
-const allDefaultProductTypes = ["Earring","Ring","Bracelet","Necklace"];
-const fetchproducts = async ():Promise<any> => {
-  const { data, error } = await supabase.from('jewelries').select('*').neq("Tag", checkForAvailabilty()).order(ApplyOrderByprice(), ApplyfilterByprice()).gte("Price", checkGreaterPrice()).lte("Price", checkLesserPrice()).in("Category",handleProductType())
-  return data;
- }
-const {isPending,error,data} = useQuery({
-  queryKey:['products',availabilty,sortBy,fromPrice,Underprice,ProductType],
-  queryFn:()=>fetchproducts()
-});
+  const allDefaultProductTypes = ["Earring", "Ring", "Bracelet", "Necklace"];
+  const fetchproducts = async (): Promise<any> => {
+    const { data, error } = await supabase.from('jewelries').select('*').neq("Tag", checkForAvailabilty()).order(ApplyOrderByprice(), ApplyfilterByprice()).gte("Price", checkGreaterPrice()).lte("Price", checkLesserPrice()).in("Category", handleProductType())
+    return data;
+  }
+  const { isPending, error, data } = useQuery({
+    queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
+    queryFn: () => fetchproducts()
+  });
   return (
-    <globalStore.Provider value={{setSearchVisible,setFilterVisiblity,data,Bag,setBag,setBagVisibility,activePage,setactivePage,wishlist,setWishlist }} >
+    <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, Bag, setBag, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
       <div className={` appBody`}>
-        <Mobile/>
+        <Mobile />
         <Hero />
-        <Notification/>
+        <Notification />
         <Navtocat />
         <Shop />
         <AnimatePresence>
           {showFilter && <Popupfiltercomponent />}
-          {showBag && <BagShop/>}
-          {showSearch&&<SearchComponent/>}
+          {showBag && <BagShop />}
+          {showSearch && <SearchComponent />}
         </AnimatePresence>
-        <Lastpart/>
+        <Lastpart />
+        <Footer1/>
       </div>
     </globalStore.Provider>
   )

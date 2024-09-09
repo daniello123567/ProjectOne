@@ -17,7 +17,7 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
       clickable:true,
       el:'.indicator',
       renderBullet:function(i,classname){
-        return `<span class=${classname}></span>`
+        return `<span key=${i} class=${classname}></span>`
       }
     }}
     >

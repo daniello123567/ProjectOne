@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer1() {
   return (
-    <div>Footer1</div>
+    <div className='w-full'>Footer1</div>
   )
 }
 
