@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import ShopTitle from './ShopTitle'
 import Shopfilters from './Shopfilters'
@@ -10,7 +11,7 @@ function Shop() {
       <Heromsg />
 
       <Shopfilters />
-      <Products key={"id-10-12"}  />
+      <Products  key={"id-10-12"}  />
     </div>
   )
 }

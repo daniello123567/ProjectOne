@@ -8,9 +8,8 @@ function Lastpart() {
   const {data} = useContext(globalStore)
   return (
     <div>
-      <p className={`${font.className} text-[1rem] font-[400] text-center`}>You&apos;ve viewed {data&&data.length} products.
-        <br/>
-     We Hope you found what you like.</p>
+      <p className={`${font.className} underline mt-[1em] text-[1rem] font-[400] text-center`}>You&apos;ve viewed {data&&data.length} products.
+     </p>
     </div>
   )
 }

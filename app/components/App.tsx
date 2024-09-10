@@ -23,7 +23,6 @@ function App() {
   const [showSearch, setSearchVisible] = useState<boolean>(false);
   const [activePage, setactivePage] = useState<string>('');
   const [wishlist, setWishlist] = useState<any[]>([])
-  const [Bag, setBag] = useState<any[]>([])
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -38,9 +37,6 @@ function App() {
       setWishlist(JSON.parse(savedWishlist));
     }
 
-    if (savedBagProducts) {
-      setBag(JSON.parse(savedBagProducts));
-    }
   }, [])
 
   const checkForAvailabilty = (): string => {
@@ -89,16 +85,15 @@ function App() {
   const { isPending, error, data } = useQuery({
     queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
     queryFn: () => fetchproducts(),
-    staleTime:2
   });
   return (
-    <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, Bag, setBag, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
+    <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
         <Notification />
         <Navtocat />
-        <Shop />
+        <Shop key={"9034"} />
         <AnimatePresence>
           {showFilter && <Popupfiltercomponent />}
           {showBag && <BagShop />}
@@ -112,4 +107,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

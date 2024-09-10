@@ -1,4 +1,3 @@
-"use client"
 import React, { memo, useContext, useMemo } from 'react'
 import Product from './Product'
 import globalStore from '../store/globalstore'
@@ -18,13 +17,11 @@ Amt_in_stock:number
 }
 }
 function Products() {
-  console.log('product rerenders');
-
   const {data,isPending} = useContext(globalStore);
   const memoizedData = useMemo(()=>data,[data])
   const Allproducts =()=>{
     return <>
-    {data&&memoizedData.map((product:product)=>{
+    {memoizedData&&memoizedData.map((product:product)=>{
       return <Product Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
     })}
   </>
@@ -43,3 +40,4 @@ function Products() {
 }
 
 export default memo(Products)
+export const revalidate = 5;

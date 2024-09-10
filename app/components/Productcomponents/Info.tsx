@@ -1,7 +1,9 @@
 "use client"
-import React, { useContext, useCallback, useMemo} from 'react'
+import React, { useContext, useEffect} from 'react'
+import { useStore } from 'zustand';
 import localFont from 'next/font/local'
 import globalStore from '@/app/store/globalstore';
+import myStore from '@/app/store/Store';
 import Wishlistbtn from './wishlistbtn';
 import Gold from '../colors/Gold';
 import Silver from '../colors/Silver';
@@ -14,7 +16,9 @@ return number.toLocaleString();
 }
 
 function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
-  const {Bag,setBag} = useContext(globalStore)
+   const {Bag,setBag,removeFromBag} = myStore();
+
+
   const ColorChooser = (color:string)=>{
     const Colore = color.toLowerCase()
     if(Colore=="gold"){
@@ -33,9 +37,8 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
   const addProductToBag =()=>{
     if(Tag&&Tag.toLowerCase()!=="out-of-stock"){
    if(checkIfProductisInBagAlready()){
-    const newBagproducts = Bag.filter((product:any)=>product.id !==idOfProduct);
-    setBag([...newBagproducts]);
-    localStorage.setItem("Bag",JSON.stringify([...newBagproducts]));
+    removeFromBag(idOfProduct);
+
    }else{
     let newBagProduct = {
       id:idOfProduct,
@@ -46,8 +49,8 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
       image:image,
       Amt_in_stock:Amt_in_stock
     }
-     setBag([...Bag,newBagProduct])
-     localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
+     setBag(newBagProduct);
+
    }
   }
    }
