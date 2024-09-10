@@ -29,7 +29,7 @@ function Wishlister() {
   const WishesFromDB = () => {
     return <div className='grid w-full gap-[.7em] h-full  grid-cols-2 grid-rows-2'>
       {data&&data?.map((product: product) => {
-        return <Product key={product.id} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} images={product.ImagesUrl} id={product.id} Price={product.Price} Color={product.Color} Name={product.Name} />
+        return <Product details={product.Details} key={product.id} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} images={product.ImagesUrl} id={product.id} Price={product.Price} Color={product.Color} Name={product.Name} />
       })}
     </div>
   }
