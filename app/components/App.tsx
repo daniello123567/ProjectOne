@@ -1,5 +1,5 @@
 "use client"
-import React, {  useEffect, useState } from 'react'
+import React, {  useEffect, useState ,memo} from 'react'
 import Hero from './Hero'
 import Navtocat from './Navtocat'
 import Notification from './Notification'
@@ -18,7 +18,6 @@ import Footer1 from './footer/Footer1'
 import Footer2 from './footer/Footer2'
 
 function App() {
-
   const [showFilter, setFilterVisiblity] = useState(false);
   const [showBag, setBagVisibility] = useState<boolean>(false);
   const [showSearch, setSearchVisible] = useState<boolean>(false);

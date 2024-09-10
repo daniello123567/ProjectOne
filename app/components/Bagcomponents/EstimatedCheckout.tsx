@@ -7,8 +7,6 @@ const small = localFont({src:"../../fonts/smallfontforbrondon.woff2"})
 function EstimatedCheckout() {
   const [totalPrice,setTotalPrice] = useState<number>(0);
   const {Bag} = useContext(globalStore);
-  console.log(Bag,"kk");
-
   const getAllTotalPrice = ()=>{
      let sumOfAllPriceTimesQuantity:number=0;
     for(let i=0;i<Bag.length;i++){

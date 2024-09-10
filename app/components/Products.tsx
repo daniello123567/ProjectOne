@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+"use client"
+import React, { memo, useContext, useMemo } from 'react'
 import Product from './Product'
 import globalStore from '../store/globalstore'
 import ProductSkeletons from './shopComponents/ProductsLoad'
@@ -17,10 +18,13 @@ Amt_in_stock:number
 }
 }
 function Products() {
+  console.log('product rerenders');
+
   const {data,isPending} = useContext(globalStore);
-  const Allproducts = ()=>{
+  const memoizedData = useMemo(()=>data,[data])
+  const Allproducts =()=>{
     return <>
-    {data&&data.map((product:product)=>{
+    {data&&memoizedData.map((product:product)=>{
       return <Product Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
     })}
   </>
@@ -30,12 +34,12 @@ function Products() {
 
        {
         isPending?
-        <ProductSkeletons/>
+        <ProductSkeletons key={"90sBoyo"}/>
         :
-        <Allproducts/>
+        <Allproducts key={"ohgod"}/>
        }
        </div>
   )
 }
 
-export default Products
+export default memo(Products)

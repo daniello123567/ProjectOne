@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from 'react'
 import Productsinbg from './Productsinbg'
 import globalStore from '@/app/store/globalstore'

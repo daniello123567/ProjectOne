@@ -10,6 +10,8 @@ import Empty from './Empty'
 const font = localFont({ src: "../../fonts/KapraNeueW05-SemiBold.woff2" })
 const font2 = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
 function Wishlist() {
+  console.log('wishlist rerenders');
+
   const { wishlist } = useContext(globalStore);
   const fetchProductsBasedOnId = async () => {
     const idOfwishes = wishlist.map((product: product) => {
@@ -25,7 +27,7 @@ function Wishlist() {
   });
   const WishesFromDB = () => {
     return <div className='grid w-full gap-[.7em] h-full  grid-cols-2 grid-rows-2'>
-      {data?.map((product: product) => {
+      {data&&data?.map((product: product) => {
         return <Product key={product.id} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} images={product.ImagesUrl} id={product.id} Price={product.Price} Color={product.Color} Name={product.Name} />
       })}
     </div>

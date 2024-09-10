@@ -4,9 +4,10 @@ import App from './components/App'
 import { QueryClient,QueryClientProvider } from '@tanstack/react-query'
 function Page() {
  const queryClient = new QueryClient()
-  return (
+
+  return(
     <QueryClientProvider client={queryClient} >
-    <App key={"id-23-45"} />
+    <App />
     </QueryClientProvider>
   )
 }

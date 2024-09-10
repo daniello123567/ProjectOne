@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useCallback} from 'react'
+import React, { useContext, useCallback, useMemo} from 'react'
 import localFont from 'next/font/local'
 import globalStore from '@/app/store/globalstore';
 import Wishlistbtn from './wishlistbtn';
@@ -30,8 +30,7 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
      });
     return response;
  }
-  const addProductToBag =
-  useCallback(()=>{
+  const addProductToBag =()=>{
     if(Tag&&Tag.toLowerCase()!=="out-of-stock"){
    if(checkIfProductisInBagAlready()){
     const newBagproducts = Bag.filter((product:any)=>product.id !==idOfProduct);
@@ -47,11 +46,11 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
       image:image,
       Amt_in_stock:Amt_in_stock
     }
-     setBag([...Bag,newBagProduct]);
-     localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
+     setBag([...Bag,newBagProduct])
+    //  localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
    }
   }
-   },[Bag,setBag]);
+   }
 
 
 
