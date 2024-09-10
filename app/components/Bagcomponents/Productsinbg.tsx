@@ -7,38 +7,9 @@ const Active = localFont({src:"../../fonts/dd.woff2"});
 const nonActive = localFont({src:"../../fonts/smallfontforbrondon.woff2"});
 declare global {type BagProduct = {Amt_in_Bag:number,imageThubnail:string,Name:string,Color:string,quantity:number,id:string,price:string|number}}
 function Productsinbg({imageThubnail,Name,Color,quantity,id,price,Amt_in_Bag}:BagProduct){
-  const {Bag,setBag} = myStore()
+  const {Bag,setBag,updateQuantity,decreaseQuantity,removeFromBag} = myStore()
 
-  const increaseQty = ()=>{
-    const newArr = Bag.map((product:BagPro)=>{
-       if(product.id===id){
-        return {...product,quantity:product.quantity+=1}
-       }else{
-        return product;
-       }
-    });
 
-    setBag([...newArr]);
-    localStorage.setItem("Bag",JSON.stringify([...newArr]));
-  }
-  const decreaseQty = ()=>{
-    if(quantity!==1){
-    const updatedArr = Bag.map((product:BagPro)=>{
-      if(product.id===id){
-        return {...product,quantity:product.quantity-=1}
-       }else{
-        return product;
-       }
-    });
-    setBag([...updatedArr]);
-    localStorage.setItem("Bag",JSON.stringify([...updatedArr]))
-  }}
-  const removeProductfromBag = ()=>{
-    const UpdatedData = Bag.filter((product:BagPro)=>product.id !==id);
-   setBag([...UpdatedData]);
-   localStorage.setItem("Bag",JSON.stringify([...UpdatedData]));
-
-  }
 
   return (
     <div className='bg-white gap-[1em] md:h-[13.03125em] flex p-[1em] lg:h-[8.1875em] border-b border-b-[#ededed] h-[8.1875em] w-full'>
@@ -53,12 +24,12 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price,Amt_in_Bag}:Ba
               {quantity==Amt_in_Bag&&<p className={`${nonActive.className} text-[0.875em] font-[400] text-[#A36200]`}>Only {Amt_in_Bag} left in stock.</p>}
             <div className='flex w-full items-center justify-between'>
               <div className={`${nonActive.className} flex justify-between p-[0.25em] border border-[#ededed] rounded-[0.25em] items-center w-[5em] h-[1.5em]`}>
-                <button type='button' className={`${quantity==1&&'cursor-not-allowed opacity-15'} flex justify-center items-center h-full`} onClick={decreaseQty}>&#8722;</button>
+                <button type='button' className={`${quantity==1&&'cursor-not-allowed opacity-15'} flex justify-center items-center h-full`} onClick={()=>decreaseQuantity(id)}>&#8722;</button>
                 <p>{quantity}</p>
-                <button className={`${quantity>=Amt_in_Bag&&"cursor-not-allowed pointer-events-none opacity-50"} `} type='button' onClick={increaseQty}>&#43;</button>
+                <button className={`${quantity>=Amt_in_Bag&&"cursor-not-allowed pointer-events-none opacity-50"} `} type='button' onClick={()=>updateQuantity(id)}>&#43;</button>
               </div>
              <div className={`${nonActive.className} w-[1.5em] h-[1.5em] font-[400] text-[0.875em] underline`}>
-              <Image onClick={removeProductfromBag} src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
+              <Image onClick={()=>removeFromBag(id)} src="/delBtn.svg" className='w-full opacity-50 h-full' width={500} height={500} alt='delbtn' />
              </div>
             </div>
            </div>

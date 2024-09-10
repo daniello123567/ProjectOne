@@ -16,13 +16,24 @@ import SearchComponent from './search/search'
 import Lastpart from './footer/Lastpart'
 import Footer1 from './footer/Footer1'
 import Footer2 from './footer/Footer2'
+import Singleproduct from './singleProduct/Singleproduct'
 
 function App() {
   const [showFilter, setFilterVisiblity] = useState(false);
   const [showBag, setBagVisibility] = useState<boolean>(false);
   const [showSearch, setSearchVisible] = useState<boolean>(false);
   const [activePage, setactivePage] = useState<string>('');
-  const [wishlist, setWishlist] = useState<any[]>([])
+  const [showSingleproduct,setSingleproductvisibilty] = useState<boolean>(false);
+  const [currentProduct,setcurrentProduct] = useState<currentProduct>({
+    arrayofImages:["s"],
+    Name:"nube",
+    color:"any",
+    Price:20,
+    details:"yes",
+    Tag:"yes",
+    id:"sampleid",
+    Amt_in_stock:1
+  })
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -30,14 +41,7 @@ function App() {
   const fromPrice = params.get('fromPrice');
   const Underprice = params.get('Underprice');
   const ProductType = params.getAll("Product-type");
-  useEffect(() => {
-    const savedBagProducts = localStorage.getItem('Bag');
-    const savedWishlist = localStorage.getItem('Wishlist');
-    if (savedWishlist) {
-      setWishlist(JSON.parse(savedWishlist));
-    }
 
-  }, [])
 
   const checkForAvailabilty = (): string => {
     if (availabilty && availabilty == "in-stock") {
@@ -87,7 +91,7 @@ function App() {
     queryFn: () => fetchproducts(),
   });
   return (
-    <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
+    <globalStore.Provider value={{isPending,setSingleproductvisibilty,setcurrentProduct, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
@@ -98,8 +102,9 @@ function App() {
           {showFilter && <Popupfiltercomponent />}
           {showBag && <BagShop />}
           {showSearch && <SearchComponent />}
+          {showSingleproduct&&<Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
         </AnimatePresence>
-        <Lastpart />
+        {!isPending&&<Lastpart />}
         <Footer1/>
         <Footer2/>
       </div>

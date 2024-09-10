@@ -16,7 +16,7 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
     mousewheel={true}
     pagination={{
       clickable:true,
-      el:'.indicator',
+      el:'.indicatorBoss',
       renderBullet:function(i,classname){
         return `<span class=${classname}></span>`
       }
@@ -27,7 +27,7 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
           <Image key={image+'-'+image} className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>
         </SwiperSlide>
       })}
-          {arrayofImages.length!==1&&<div className='indicator z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>}
+          {arrayofImages.length!==1&&<div className='indicatorBoss z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>}
 
     </Swiper>
    <div className={`${font.className} absolute ${Tag.toLowerCase() =="out-of-stock" && "bg-red-400"} top-[1em] left-[1em] p-[0.25em] z-[10] text-[0.75em] font-[400] w-max bg-[#ECE9E0]`}>{Tag}</div>

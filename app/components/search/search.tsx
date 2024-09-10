@@ -28,7 +28,7 @@ function SearchComponent() {
   const SearchResults = () => {
     return <div className='grid gap-[1em] grid-cols-2 grid-rows-2'>
       {data?.length != 0 ? data?.map((product: product) => {
-        return <Product Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name} />
+        return <Product details={product.Details} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name} />
       }) : <Suggest showError={true} query={searchQuery} />}
     </div>
   }
