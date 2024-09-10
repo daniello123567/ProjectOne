@@ -20,8 +20,8 @@ function EstimatedCheckout() {
     getAllTotalPrice()
   },[Bag])
   return (
-    <div className='w-full fixed bottom-0 h-[8.875em] px-[1.5em] py-[1em] shadow-2xl border-t border-t-black bg-white'>
-         <div className='flex mb-[0.5em] justify-between '>
+    <div className='w-full fixed bottom-0 h-max px-[1em] py-[0.8em] shadow-2xl border-t border-t-black bg-white'>
+         <div className='flex mb-[1em] justify-between '>
           <p className={`${bold.className} font-[500] text-[1rem]`}>Total</p>
           <p className={`${small.className} text-[1rem] font-[400]`}>&#x20A6;{totalPrice.toLocaleString()}</p>
          </div>
