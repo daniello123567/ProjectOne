@@ -47,7 +47,7 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
       Amt_in_stock:Amt_in_stock
     }
      setBag([...Bag,newBagProduct])
-    //  localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
+     localStorage.setItem("Bag",JSON.stringify([...Bag,newBagProduct]))
    }
   }
    }
