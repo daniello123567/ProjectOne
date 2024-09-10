@@ -15,6 +15,7 @@ import BagShop from './Bag'
 import SearchComponent from './search/search'
 import Lastpart from './footer/Lastpart'
 import Footer1 from './footer/Footer1'
+import Footer2 from './footer/Footer2'
 
 function App() {
 
@@ -92,7 +93,7 @@ function App() {
   });
   return (
     <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, Bag, setBag, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
-      <div className={` appBody`}>
+      <div className={`appBody`}>
         <Mobile />
         <Hero />
         <Notification />
@@ -103,8 +104,9 @@ function App() {
           {showBag && <BagShop />}
           {showSearch && <SearchComponent />}
         </AnimatePresence>
-        <Lastpart />
+        <Lastpart data={data} />
         <Footer1/>
+        <Footer2/>
       </div>
     </globalStore.Provider>
   )

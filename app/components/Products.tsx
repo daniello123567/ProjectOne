@@ -27,7 +27,7 @@ function Products() {
   </>
   }
   return (
-    <div className='grid md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[.7em]  grid-cols-2 grid-rows-2'>
+    <div className='grid lg:gap-[1em] h-full md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[.7em]  grid-cols-2 grid-rows-2'>
 
        {
         isPending?<ProductSkeletons/>:

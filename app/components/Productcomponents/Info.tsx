@@ -63,7 +63,7 @@ function Info({name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
     <p className={`${smallfont.className} font-[400] text-[1rem]`}>&#8358;{formatNumber(price)}</p>
      <div className='w-[1.25em] h-[1.25em] border border-black rounded-full flex justify-center items-center'>{ColorChooser(color)}</div>
     <p className={`${smallfont.className} text-[0.75em] font-[400]`}>{color}</p>
-    <button onClick={addProductToBag} className={`${font.className} ${Tag.toLowerCase()=="out-of-stock" && "opacity-50"}  lg:hidden mt-[.5em] py-[0.35em] px-[0.75em] w-full  font-[500]  tracking-[1px] text-[0.75em] rounded-full border border-[#EDEDED]`} type='button'>{checkIfProductisInBagAlready()?'ADDED TO BAG' :'ADD TO BAG'}</button>
+    <button onClick={addProductToBag} className={`${font.className} ${Tag.toLowerCase()=="out-of-stock" && "opacity-50"}  mt-[.5em] py-[0.35em] px-[0.75em] w-full  font-[500]  tracking-[1px] text-[0.75em] rounded-full border border-[#EDEDED]`} type='button'>{checkIfProductisInBagAlready()?'ADDED TO BAG' :'ADD TO BAG'}</button>
    </div>
   )
 }
