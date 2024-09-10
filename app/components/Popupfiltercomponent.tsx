@@ -100,7 +100,7 @@ const animationVariants = {
   },
  }
 }
-const {setFilterVisiblity} = useContext(globalStore);
+const {setFilterVisiblity,data} = useContext(globalStore);
   return (
 
     <ChakraProvider>
@@ -148,7 +148,7 @@ const {setFilterVisiblity} = useContext(globalStore);
      </div>
       </div>
       <button onClick={()=>setFilterVisiblity(false)} type="button" className={`${font.className} uppercase text-white w-full h-[2.875em] hover:bg-[#626262] bg-black`}>
-        view all *filteredproductsnumber*
+        view {data?data.length:'loading..'} items
       </button>
     </motion.div>
     </ChakraProvider>

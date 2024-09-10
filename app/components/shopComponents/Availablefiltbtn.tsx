@@ -12,8 +12,6 @@ function Availablefiltbtn({filter,keyVal}:{filter:string,keyVal:string}){
   const handleDeletefromUrl = ()=>{
    params.delete(String(keyVal),String(filter));
     replace(`?${params}`,{scroll:false})
-  console.log(keyVal,'of',filter,'deleted');
-
   }
   return (
     <button onClick={handleDeletefromUrl} type='button' className={`${shoptitlefont1.className} h-[1.875em] flex items-center text-[0.75em] font-[400] rounded-full w-max border border-black outline-1 outline-black py-[.25em] px-[0.5em]`}>{filter}
