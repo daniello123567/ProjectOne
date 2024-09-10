@@ -5,6 +5,7 @@ import globalStore from '@/app/store/globalstore'
 import EstimatedCheckout from './EstimatedCheckout'
 import Emptybg from './Emptybg'
 import Littlemsg from './Littlemsg'
+import myStore from '@/app/store/Store'
 declare global {
   type BagPro = {
     color: string,
@@ -17,7 +18,7 @@ declare global {
   }
 }
 function BagInBag() {
-  const { Bag } = useContext(globalStore);
+  const { Bag } = myStore()
   return (
     <div className='w-full lg:border lg:border-r overflow-auto pb-[10em] relative h-full'>
       <Littlemsg />

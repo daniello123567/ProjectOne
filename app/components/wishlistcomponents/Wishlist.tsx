@@ -5,14 +5,15 @@ import { useQuery } from '@tanstack/react-query'
 import supabase from '@/public/supabase'
 import globalStore from '@/app/store/globalstore'
 import Wishlistskeleton from './Wishlistskeleton'
+import { Wishlist } from '@/app/store/Store'
 import Product from '../Product'
 import Empty from './Empty'
 const font = localFont({ src: "../../fonts/KapraNeueW05-SemiBold.woff2" })
 const font2 = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
-function Wishlist() {
+function Wishlister() {
   console.log('wishlist rerenders');
 
-  const { wishlist } = useContext(globalStore);
+  const { wishlist } = Wishlist();
   const fetchProductsBasedOnId = async () => {
     const idOfwishes = wishlist.map((product: product) => {
       if (product.id) return product.id;
@@ -45,4 +46,4 @@ function Wishlist() {
   )
 }
 
-export default Wishlist
+export default Wishlister

@@ -3,8 +3,12 @@ import React, { useCallback, useContext } from 'react'
 import globalStore from '@/app/store/globalstore'
 import MyComponent from '../wishlistcomponents/Wishlisted'
 import HeartIcon from '../wishlistcomponents/Heart'
+import { Wishlist } from '@/app/store/Store'
 function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
-  const {wishlist,setWishlist} = useContext(globalStore)
+  // const {wishlist,setWishlist} = useContext(globalStore)
+  const {wishlist,setWishlist,removeFromWish} = Wishlist();
+  console.log(wishlist);
+
   const isInwishlistAlready = wishlist.some((product:product)=>product.id==idOfProduct);
   const addProductToWishlist = ()=>{
     if(!isInwishlistAlready){
@@ -17,12 +21,9 @@ function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProd
       image:image,
       Amt_in_stock:Amt_in_stock
     }
-     setWishlist([...wishlist,newWish]);
-     localStorage.setItem("Wishlist",JSON.stringify([...wishlist,newWish]));
+     setWishlist(newWish);
   }else {
-    const updatedWishes = wishlist.filter((product:product)=>product.id !==idOfProduct);
-    setWishlist([...updatedWishes]);
-    localStorage.setItem("Wishlist",JSON.stringify([...updatedWishes]));
+    removeFromWish(idOfProduct)
 
   }
   }

@@ -6,6 +6,11 @@ type state = {
   removeFromBag:(id:string)=>void;
   updatefromLocalstorage:(newData:any)=>void;
 }
+type Wish = {
+  wishlist:any[],
+  setWishlist:()=>void;
+  removeFromWish:()=>void;
+}
 const myStore = create<state|any>(
    persist((set)=>({
   Bag:[],
@@ -14,7 +19,15 @@ const myStore = create<state|any>(
 }),{name:"Bag"})
 
 )
+export const Wishlist = create<Wish|any>(persist(
+  (set)=>({
+    wishlist:[],
+    setWishlist:(newWish:any)=>set((state:any)=>({wishlist:[...state.wishlist,newWish]})),
+    removeFromWish:(id:string)=>set((state:any)=>({wishlist:state.wishlist.filter((product:product)=>product.id!=id)}))
+  }),{
+    name:"Wishlist"
+  }
+))
 export default myStore;
-
 
 

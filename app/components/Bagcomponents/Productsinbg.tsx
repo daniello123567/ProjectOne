@@ -2,11 +2,12 @@ import React, { useContext } from 'react'
 import localFont from 'next/font/local';
 import Image from 'next/image';
 import globalStore from '@/app/store/globalstore';
+import myStore from '@/app/store/Store';
 const Active = localFont({src:"../../fonts/dd.woff2"});
 const nonActive = localFont({src:"../../fonts/smallfontforbrondon.woff2"});
 declare global {type BagProduct = {Amt_in_Bag:number,imageThubnail:string,Name:string,Color:string,quantity:number,id:string,price:string|number}}
 function Productsinbg({imageThubnail,Name,Color,quantity,id,price,Amt_in_Bag}:BagProduct){
-  const {Bag,setBag} = useContext(globalStore);
+  const {Bag,setBag} = myStore()
 
   const increaseQty = ()=>{
     const newArr = Bag.map((product:BagPro)=>{

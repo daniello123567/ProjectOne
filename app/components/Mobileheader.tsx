@@ -3,11 +3,12 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import globalStore from '../store/globalstore'
 import localFont from 'next/font/local'
-import myStore from '../store/Store'
+import myStore, { Wishlist } from '../store/Store'
 const font = localFont({src:"../fonts/smallfontforbrondon.woff2"})
 function Mobileheader() {
   const {Bag} = myStore()
-  const {setBagVisibility,setactivePage,wishlist,setSearchVisible} = useContext(globalStore);
+  const {wishlist} = Wishlist()
+  const {setBagVisibility,setactivePage,setSearchVisible} = useContext(globalStore);
   return (
     <>
     <div className='w-full lg:h-[4.5625em] z-[99999] p-[1em] justify-between flex items-center bg-white fixed top-0 h-[3.5625em] border-b border-b-black'>
