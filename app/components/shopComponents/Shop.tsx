@@ -7,11 +7,10 @@ function Shop() {
 
   return (
     <div className='h-max'>
-      {/* <ShopTitle /> */}
       <Heromsg />
 
       <Shopfilters />
-      <Products />
+      <Products key={"id-10-12"}  />
     </div>
   )
 }

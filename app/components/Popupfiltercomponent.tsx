@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import localFont from 'next/font/local'
 import {Switch,ChakraProvider} from "@chakra-ui/react"
 import {AnimatePresence, motion} from "framer-motion"
@@ -7,7 +7,7 @@ const font = localFont({src:"../fonts/dd.woff2"});
 
 
 const smallfont = localFont({src:"../fonts/smallfontforbrondon.woff2"});
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import globalStore from '../store/globalstore'
 function Popupfiltercomponent() {
  const [presentlyCheckedSortoption,setOption] = useState<string>();
@@ -64,7 +64,7 @@ const handleAvailability = ()=>{
  params.set('availability',"in-stock");
  replace(`?${params}`,{scroll:false})}
 }
-const readUrlAndSetButtonsActive =()=>{
+const readUrlAndSetButtonsActive = ()=>{
 
   const isSortByActive = params.get('sortBy');
   if(isSortByActive){

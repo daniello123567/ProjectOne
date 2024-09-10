@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import Hero from './Hero'
 import Navtocat from './Navtocat'
 import Notification from './Notification'
@@ -89,7 +89,8 @@ function App() {
   }
   const { isPending, error, data } = useQuery({
     queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
-    queryFn: () => fetchproducts()
+    queryFn: () => fetchproducts(),
+    staleTime:2
   });
   return (
     <globalStore.Provider value={{isPending, setSearchVisible, setFilterVisiblity, data, Bag, setBag, setBagVisibility, activePage, setactivePage, wishlist, setWishlist }} >
@@ -104,7 +105,7 @@ function App() {
           {showBag && <BagShop />}
           {showSearch && <SearchComponent />}
         </AnimatePresence>
-        <Lastpart data={data} />
+        <Lastpart />
         <Footer1/>
         <Footer2/>
       </div>

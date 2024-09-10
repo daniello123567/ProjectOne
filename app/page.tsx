@@ -6,7 +6,7 @@ function Page() {
  const queryClient = new QueryClient()
   return (
     <QueryClientProvider client={queryClient} >
-    <App/>
+    <App key={"id-23-45"} />
     </QueryClientProvider>
   )
 }

@@ -23,7 +23,7 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
     >
       {arrayofImages.map((image)=>{
         return <SwiperSlide className='w-full h-full'  key={'image'+`-${image}`}>
-          <Image key={`${image}+IDSPECIAL`} className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>
+          <Image className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>
         </SwiperSlide>
       })}
           {arrayofImages.length!==1&&<div className='indicator z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>}
