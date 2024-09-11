@@ -13,3 +13,5 @@
 .swiper{@apply w-full h-full}
 .swiper-pagination-bullet-active{@apply  z-[30000] bg-black}
 .swiper-pagination-bullet{@apply z-[300000] h-full w-full}
+.swiper-button-prev::after{@apply fill-black text-black}
+.swiper-button-next::after{@apply fill-black text-black}

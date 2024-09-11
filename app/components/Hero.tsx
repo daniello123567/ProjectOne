@@ -8,10 +8,10 @@ const font2 = localFont({src:"../fonts/smallfontforbrondon.woff2"})
 function Hero() {
   return (
     <div className="relative">
-         <div className='flex justify-center  text-white items-center'>
-        <div className='w-full absolute bottom-0 z-[400000] py-[2.5em] text-white text-center px-[1em]'>
+         <div className='flex  justify-center  text-white items-center'>
+        <div className='w-full absolute bottom-0 z-[400] py-[2.5em] text-white text-center px-[1em]'>
         <p className={`${heroText.className} md:text-[3em] tracking-[1px] text-[2em] font-[600]`}>Nube</p>
-        <button type='button' className={`${subheadingFont.className} text-[0.875em] tracking-[1px]  py-[0.75em] bg-black px-[2em] z-[20000] `}>GO TO SHOP</button>
+        <button type='button' className={`${subheadingFont.className} text-[0.875em] tracking-[1px]  py-[0.75em] bg-black px-[2em]`}>GO TO SHOP</button>
       </div>
                </div>
         <AnimatedHero/>

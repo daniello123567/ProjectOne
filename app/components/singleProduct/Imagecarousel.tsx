@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from 'react'
 import localFont from 'next/font/local'
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination, Navigation } from 'swiper/modules'
+import { Pagination, Navigation,Scrollbar } from 'swiper/modules'
+import "swiper/css/scrollbar"
 import Image from 'next/image'
 import globalStore from '@/app/store/globalstore'
 
 const smallFont = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
 
 function Imagecarousel({arrayOfImages}:{arrayOfImages:string[]}){
-  
+
   const {setSingleproductvisibilty} = useContext(globalStore);
   return (
     <div className='pictures relative md:h-full bg-white h-[20em] md:w-[50%] w-full'>
         <Swiper
           slidesPerView={1}
-          modules={[Pagination, Navigation]}
+          modules={[Pagination, Navigation,Scrollbar]}
+          scrollbar
           navigation
           pagination={{
             clickable: true
