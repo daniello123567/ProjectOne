@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import localFont from 'next/font/local'
 import { useQuery } from '@tanstack/react-query'
-import supabase from '@/public/supabase'
+import supabase from '@/utils/supabase'
 import globalStore from '@/app/store/globalstore'
 import Wishlistskeleton from './Wishlistskeleton'
 import { Wishlist } from '@/app/store/Store'
@@ -28,7 +28,7 @@ function Wishlister() {
   });
   const WishesFromDB = () => {
     return <div className='grid w-full gap-[.7em] h-full  grid-cols-2 grid-rows-2'>
-      {data&&data?.map((product: product) => {
+      {data && data?.map((product: product) => {
         return <Product details={product.Details} key={product.id} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} images={product.ImagesUrl} id={product.id} Price={product.Price} Color={product.Color} Name={product.Name} />
       })}
     </div>

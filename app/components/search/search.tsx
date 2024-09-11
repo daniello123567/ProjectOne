@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useContext, useState } from 'react'
 import localFont from 'next/font/local'
 import { useQuery } from '@tanstack/react-query'
-import supabase from '@/public/supabase'
+import supabase from '@/utils/supabase'
 import Product from '../Product'
 import { motion } from "framer-motion"
 import globalStore from '@/app/store/globalstore'

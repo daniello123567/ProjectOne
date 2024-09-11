@@ -1,5 +1,5 @@
 "use client"
-import React, {  useEffect, useState ,memo} from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import Hero from './Hero'
 import Navtocat from './Navtocat'
 import Notification from './Notification'
@@ -7,7 +7,7 @@ import Shop from './shopComponents/Shop'
 import globalStore from '../store/globalstore'
 import Popupfiltercomponent from './Popupfiltercomponent'
 import { AnimatePresence } from 'framer-motion'
-import supabase from '@/public/supabase'
+import supabase from '@/utils/supabase'
 import { useSearchParams } from 'next/navigation'
 import Mobile from './Mobileheader'
 import { useQuery } from '@tanstack/react-query'
@@ -23,16 +23,16 @@ function App() {
   const [showBag, setBagVisibility] = useState<boolean>(false);
   const [showSearch, setSearchVisible] = useState<boolean>(false);
   const [activePage, setactivePage] = useState<string>('');
-  const [showSingleproduct,setSingleproductvisibilty] = useState<boolean>(false);
-  const [currentProduct,setcurrentProduct] = useState<currentProduct>({
-    arrayofImages:["s"],
-    Name:"nube",
-    color:"any",
-    Price:20,
-    details:"yes",
-    Tag:"yes",
-    id:"sampleid",
-    Amt_in_stock:1
+  const [showSingleproduct, setSingleproductvisibilty] = useState<boolean>(false);
+  const [currentProduct, setcurrentProduct] = useState<currentProduct>({
+    arrayofImages: ["s"],
+    Name: "nube",
+    color: "any",
+    Price: 20,
+    details: "yes",
+    Tag: "yes",
+    id: "sampleid",
+    Amt_in_stock: 1
   })
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
@@ -91,7 +91,7 @@ function App() {
     queryFn: () => fetchproducts(),
   });
   return (
-    <globalStore.Provider value={{isPending,setSingleproductvisibilty,setcurrentProduct, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage }} >
+    <globalStore.Provider value={{ isPending, setSingleproductvisibilty, setcurrentProduct, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
@@ -102,11 +102,11 @@ function App() {
           {showFilter && <Popupfiltercomponent />}
           {showBag && <BagShop />}
           {showSearch && <SearchComponent />}
-          {showSingleproduct&&<Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
+          {showSingleproduct && <Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
         </AnimatePresence>
-        {!isPending&&<Lastpart />}
-        <Footer1/>
-        <Footer2/>
+        {!isPending && <Lastpart />}
+        <Footer1 />
+        <Footer2 />
       </div>
     </globalStore.Provider>
   )

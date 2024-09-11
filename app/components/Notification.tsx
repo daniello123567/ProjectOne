@@ -5,7 +5,7 @@ import NotificationMultiplier from './Notification/NotificationMultiplier'
 
 function Notification() {
   return (
-    <div className='bg-[#BDA37D] md:py-[1em] border-t border-t-black overflow-hidden py-[0.5em] w-full'>
+    <div className='bg-[#BDA37D] z-[30000000] md:py-[1em] border-t border-t-black overflow-hidden py-[0.5em] w-full'>
       <motion.div animate={{
         x:['-100%',"0%"],
         transition:{
