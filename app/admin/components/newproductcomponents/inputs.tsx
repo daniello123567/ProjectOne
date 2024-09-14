@@ -58,8 +58,8 @@ function Inputs() {
        if(url)
        supabaseUrl.push(url)
      }
-     setoptimisticfiles([...localUrls]);
-     setUrls([...supabaseUrl]);
+     setoptimisticfiles([...optimiticfiles,...localUrls]);
+     setUrls([...supabaseImageUrls,...supabaseUrl]);
      setProduct({...product,ImagesUrl:[...supabaseUrl]})
   }
 const checkHowManyFiles = (files:any)=>{
@@ -94,16 +94,17 @@ const handleInsert = async ()=>{
     Details:product.Details,
     Amt_in_stock:product.Amt_in_stock
    });
-   console.log(data,error);
+   if(error){
+    alert("error")
+   }
 
    }else{
     alert("complete al fields")
    }
 
 }
-console.log(product)
   return (
-    <div className='w-full md:w-[60%] pb-[3em] md:mx-auto px-[1em]'>
+    <div className='w-full md:w-[60%]  md:mx-auto px-[1em]'>
       <input multiple={true} onChange={(e)=>{handleImages(e.target.files);checkHowManyFiles(e.target.files)}} accept='image/*' className='hidden galleryOpener' title='files' type='file'/>
       <p>Name:</p>
       <input onChange={productInfo} name='Name' className='w-full border px-[1em] outline-none rounded-[0.375em] h-[2.375em] mt-[.7em] bg-[#F3F3F3]' title='Name' type='text'/>

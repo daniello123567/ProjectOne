@@ -45,7 +45,7 @@ function App() {
 
   const checkForAvailabilty = (): string => {
     if (availabilty && availabilty == "in-stock") {
-      return "Out-of-stock"
+      return "out-of-stock"
     } else return ""
   }
   const ApplyOrderByprice = (): string => {
