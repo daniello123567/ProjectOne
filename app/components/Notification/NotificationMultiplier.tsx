@@ -11,8 +11,8 @@ function NotificationMultiplier({Text}:{Text:string}) {
     };
     return arr;
   }
-  return (<>{multiplier().map(()=>{
-    return (<div key={crypto.randomUUID()} className='flex items-center gap-[.3em]'>
+  return (<>{multiplier().map((_,I)=>{
+    return (<div key={`ID-FOR-NOTIFICATION${I}`} className='flex items-center gap-[.3em]'>
       <Image src="/smallbox.svg" className='w-[1em] h-[1em]' width={500} alt='notification' height={300}/>
         <p className={`${myFont.className} md:text-[0.875em] text-[0.75em] font-[500] tracking-[1px] whitespace-nowrap`}>{Text}</p>
     </div>)

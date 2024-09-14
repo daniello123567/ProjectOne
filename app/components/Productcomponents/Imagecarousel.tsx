@@ -1,12 +1,14 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper,SwiperSlide } from 'swiper/react'
 import "swiper/css"
+import Skeleton from 'react-loading-skeleton'
 import { Pagination } from 'swiper/modules'
 import localFont from 'next/font/local';
 import Image from 'next/image';
 const font= localFont({src:"../../fonts/dd.woff2"});
 function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) {
+  const [isImageLoaded,setisImageLoaded] = useState<boolean>(true)
   return (
     <div className='w-full group relative h-[60%]'>
     <Swiper
@@ -24,7 +26,8 @@ function Imagecarousel({arrayofImages,Tag}:{arrayofImages:string[],Tag:string}) 
     >
       {arrayofImages.map((image)=>{
         return <SwiperSlide className='w-full h-full'  key={'image'+`-${image}`}>
-          <Image key={image+'-'+image} className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>
+          {isImageLoaded&&<Image onLoad={()=>setisImageLoaded(true)} key={image+'-'+image} className='w-full h-full object-cover'  width={1000} height={1000} alt={`image of  ${image}`} src={`${image}`}/>}
+          {!isImageLoaded&&<Skeleton width={"100%"} height={"100%"} />}
         </SwiperSlide>
       })}
           {arrayofImages.length!==1&&<div className='indicatorBoss z-[20] flex flex-row absolute bottom-[1em] left-[1em] h-[.2em] w-[1.8em] bg-[#E5E5E5]'></div>}

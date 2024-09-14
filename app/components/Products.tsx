@@ -11,24 +11,22 @@ ImagesUrl:string[],
 Name:string;
 Price:number;
 Tag:string;
-created_at:string;
-id:string;
+created_at:string|any;
+id:string|any;
 Amt_in_stock:number
 }
 }
 function Products() {
   const {data,isPending} = useContext(globalStore);
-  const memoizedData = useMemo(()=>data,[data])
   const Allproducts =()=>{
     return <>
-    {memoizedData&&memoizedData.map((product:product)=>{
+    {data&&data.map((product:product)=>{
       return <Product details={product.Details} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
     })}
   </>
   }
   return (
-    <div className='grid lg:gap-[1em]  h-full md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-4 md:grid-rows-3 px-[1em] gap-[.7em]  grid-cols-2 grid-rows-2'>
-
+    <div className='grid lg:gap-[1em] h-auto md:grid-cols-3 lg:grid-cols-4   px-[1em] gap-[.7em]  grid-cols-2 '>
        {
         isPending?
         <ProductSkeletons key={"90sBoyo"}/>
@@ -39,5 +37,5 @@ function Products() {
   )
 }
 
-export default memo(Products)
+export default Products;
 export const revalidate = 5;

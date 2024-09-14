@@ -5,7 +5,6 @@ import MyComponent from '../wishlistcomponents/Wishlisted'
 import HeartIcon from '../wishlistcomponents/Heart'
 import { Wishlist } from '@/app/store/Store'
 function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
-  // const {wishlist,setWishlist} = useContext(globalStore)
   const {wishlist,setWishlist,removeFromWish} = Wishlist();
   console.log(wishlist);
 
