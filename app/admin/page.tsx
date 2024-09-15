@@ -5,7 +5,7 @@ import { QueryClient,QueryClientProvider } from '@tanstack/react-query'
 import Notification from './components/Updatefooter/Notification'
 import {ClerkProvider, useUser} from "@clerk/nextjs"
 import { useRouter } from 'next/navigation'
-function page() {
+function Page() {
   const querybro = new QueryClient();
   const {isSignedIn,isLoaded} = useUser();
   const router = useRouter()
@@ -20,4 +20,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
