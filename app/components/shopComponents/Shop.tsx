@@ -7,7 +7,7 @@ import Heromsg from '../Heromsg'
 function Shop() {
 
   return (
-    <div>
+    <div className='shop'>
       <Heromsg />
       <Shopfilters />
       <Products  key={"id-10-12"}  />
