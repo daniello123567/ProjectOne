@@ -96,9 +96,11 @@ function App() {
         <Mobile />
         <Hero />
         <Notification />
-        <Navtocat />
-        <Shop key={"9034"} />
         <AnimatePresence>
+
+        <Navtocat />
+
+        <Shop key={"9034"} />
           {showFilter && <Popupfiltercomponent />}
           {showBag && <BagShop />}
           {showSearch && <SearchComponent />}
