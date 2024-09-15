@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import supabase from '@/utils/supabase'
 import Single from './Single'
 import { useQuery } from '@tanstack/react-query'
@@ -8,7 +8,7 @@ import localFont from 'next/font/local'
 import { useSearchParams } from 'next/navigation'
 import SkeletonSearch from './Skeleton'
 const font = localFont({src:"../fonts/std_bold.woff2"})
-function Allproducts() {
+function Allproducts({functionForChildren,setsingleProductInfo}:any) {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("query")||''
 
@@ -23,8 +23,9 @@ function Allproducts() {
   });
 
   const Products = ()=>{
-    return<>{data?.map((product:product)=>{return  <Single id={product.id} Type={product.Category} Tag={product.Tag} imageSrcsingle={product.ImagesUrl[0]} Price={product.Price} Name={product.Name} key={product.id}/>})}
+    return<>{data?.map((product:product)=>{return  <Single Details={product.Details} Amtinstock={product.Amt_in_stock} Color={product.Color} imageArray={product.ImagesUrl} setsingleProductInfo={setsingleProductInfo} funcTionTorun={functionForChildren} id={product.id} Type={product.Category} Tag={product.Tag} imageSrcsingle={product.ImagesUrl[0]} Price={product.Price} Name={product.Name} key={product.id}/>})}
 </>
+
   }
   return (
     <ChakraProvider>

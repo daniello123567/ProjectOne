@@ -23,7 +23,7 @@ function Searchproducts() {
   return (
     <div className='mt-[1em] border-b pb-[.8em] flex justify-between px-[1em]'>
       <input onChange={(e)=>handleSearch(e.target.value)} className={`${font.className} py-[0.5em] outline-none text-[#574E58] text-[0.875em] px-[0.75em] border rounded-[0.3125em]`} type='text' placeholder='Search product'/>
-    <Link href="/admin/new" className={`${font.className} flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black outline outline-1 outline-[#097C4F] rounded-[0.3125em] font-[500] text-[0.75em]`}>&#43; New product</Link>
+    <Link href="/admin/new" className={`${font.className} flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] font-[500] text-[0.75em]`}>&#43; New product</Link>
     </div>
   )
 }
