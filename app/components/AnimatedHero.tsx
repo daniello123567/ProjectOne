@@ -12,7 +12,7 @@ function AnimatedHero() {
   ]
   return (
     <div className='w-full md:hidden h-full'>
-      <Slide duration={2000} indicators={false} arrows={false}>
+      <Slide canSwipe={false} duration={2000} indicators={false} arrows={false}>
         <div className='w-full h-full'>
           <Image placeholder='blur' blurDataURL={images[0]} className='w-full h-full object-cover' alt='image' width={500} height={500} src={`${images[0]}`}/>
         </div>
