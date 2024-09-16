@@ -3,8 +3,10 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import globalStore from '../store/globalstore'
 import localFont from 'next/font/local'
+import {Mukta} from "next/font/google"
 import myStore, { Wishlist } from '../store/Store'
-const font = localFont({src:"../fonts/smallfontforbrondon.woff2"})
+const font = localFont({src:"../fonts/smallfontforbrondon.woff2"});
+const comfot = localFont({src:"../fonts/MagilioRegular-Yzv2O.ttf"});
 function Mobileheader() {
   const {Bag} = myStore()
   const {wishlist} = Wishlist()
@@ -12,8 +14,10 @@ function Mobileheader() {
   return (
     <>
     <div className='w-full lg:h-[4.5625em] z-[99999] p-[1em] justify-between flex items-center bg-white fixed top-0 h-[3.5625em] border-b border-b-black'>
-    <div className='flex'>
-    <div className=' bg-purple-700 h-[1.321875em] w-[7.6875em]'></div>
+    <div className='flex items-center'>
+    <div className='  h-[1.321875em] flex justify-start items-center w-[7.6875em]'>
+      <p className={`${comfot.className} text-[1.6em] tracking-[1px]`}>NUBE</p>
+    </div>
     </div>
     <div className='icons gap-[1em] flex'>
     <Image onClick={()=>setSearchVisible(true)} className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Search.svg" alt='menu' width={500} height={500}/>
