@@ -16,7 +16,7 @@ function Mobileheader() {
     <div className='w-full lg:h-[4.5625em] z-[99999] p-[1em] justify-between flex items-center bg-white fixed top-0 h-[3.5625em] border-b border-b-black'>
     <div className='flex items-center'>
     <div className='  h-[1.321875em] flex justify-start items-center w-[7.6875em]'>
-      <p className={`${comfot.className} text-[1.6em] tracking-[1px]`}>NUBÉ</p>
+      <p className={`${comfot.className} text-[1.6em] tracking-[1px]`}>NUBE</p>
     </div>
     </div>
     <div className='icons gap-[1em] flex'>
