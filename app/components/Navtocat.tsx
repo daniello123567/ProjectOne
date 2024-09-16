@@ -13,7 +13,7 @@ type ros = {imageSrc:string,Name:string,HoverImage:string}
 function Navtocat() {
   const Box = ({imageSrc,Name,HoverImage}:ros)=>{
     return  <div className='w-full  group relative  md:h-[17.4739375em] md:w-[25%]  h-[18.203125em]  border border-black '>
-    <Image blurDataURL={imageSrc}  placeholder="blur" className='w-full absolute object-cover h-full transition-opacity duration-[.7s] ease-in-out opacity-100 group-hover:opacity-0.7' width={500} height={500} src={`${imageSrc}`} alt={`${Name}`}/>
+    <Image blurDataURL={imageSrc}  placeholder="blur" className='w-full absolute object-cover h-full transition-opacity ease-in-out opacity-100 group-hover:opacity-0.7' width={500} height={500} src={`${imageSrc}`} alt={`${Name}`}/>
     <Image width={500} height={500} className='w-full transition-opacity absolute duration-[0.5s] ease-in-out opacity-0 group-hover:opacity-100 group-hover:animate-fadeIn h-full object-cover' src={`${HoverImage}`} alt={`${Name}`}/>
     <div className={`${font.className} md:text-center  text-[0.875em] font-[500] tracking-[1px] uppercase absolute bottom-0 py-[0.75em] px-[1em]  text-white w-full`}>{Name}</div>
     <span className='w-[80%] group-hover:scale-x-100 scale-x-0 h-[.1em] bg-white absolute bottom-[.4em] origin-left transform  transition-transform duration-[400ms] ease-out'></span>
