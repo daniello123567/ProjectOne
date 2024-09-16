@@ -34,10 +34,7 @@ function Inputs() {
       getProductInfo()
     }
   },[isEdit])
-  if(isEdit){
 
-
-  }
 
 
   const productInfo = (e:any)=>{
@@ -149,15 +146,15 @@ const handleUpdate = async()=>{
       <input value={product.Price} onChange={productInfo} name='Price' className='w-full border px-[1em] outline-none rounded-[0.375em] h-[2.375em] mt-[.7em] bg-[#F3F3F3]' title='Name' type='text'/>
   <p className='mt-[1em]'>Choose Category</p>
   <div className='flex mt-[1em] gap-[1em]'>
-  <button  onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="earring" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Earring</button>
-  <button onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="bracelet" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Bracelet</button>
-  <button onClick={handleCategory}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="ring" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Ring</button>
-  <button  onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em]  ${product.Category.toLowerCase()=="necklace" && 'bg-green-600 text-white font-[500]'}  font-[500] text-[0.75em]`}>Necklace</button>
+  <button type='button'  onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="earring" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Earring</button>
+  <button type='button' onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="bracelet" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Bracelet</button>
+  <button type='button' onClick={handleCategory}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] ${product.Category.toLowerCase()=="ring" && 'bg-green-600 text-white font-[500]'} font-[500] text-[0.75em]`}>Ring</button>
+  <button type='button'  onClick={handleCategory} className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em]  ${product.Category.toLowerCase()=="necklace" && 'bg-green-600 text-white font-[500]'}  font-[500] text-[0.75em]`}>Necklace</button>
   </div>
   <p className='mt-[1em]'>Choose a Color:</p>
   <div className='flex mt-[.7em] gap-[1em]'>
-  <button onClick={handleColor}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] font-[500] ${product.Color.toLowerCase().includes("silver")&&"text-white bg-green-600 font-[500]"} text-[0.75em]`}>Silver</button>
-  <button onClick={handleColor}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] font-[500] ${product.Color.toLowerCase().includes("gold")&&"text-white bg-green-600 font-[500]"} text-[0.75em]`}>Gold</button>
+  <button type='button' onClick={handleColor}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] font-[500] ${product.Color.toLowerCase().includes("silver")&&"text-white bg-green-600 font-[500]"} text-[0.75em]`}>Silver</button>
+  <button type='button' onClick={handleColor}  className={`flex justify-center items-center bg-[#72E3ADCC] px-[0.75em] py-[0.5em] text-black border border-1 border-[#097C4F] rounded-[0.3125em] font-[500] ${product.Color.toLowerCase().includes("gold")&&"text-white bg-green-600 font-[500]"} text-[0.75em]`}>Gold</button>
 
   </div>
   <p className='mt-[1em]'>Quantity in stock</p>
