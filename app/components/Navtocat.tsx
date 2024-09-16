@@ -4,7 +4,8 @@ import localFont from 'next/font/local'
 import Image from 'next/image'
 import {AnimatePresence, motion} from "framer-motion"
 const font = localFont({src:"../fonts/dd.woff2"});
-const Pros= [{HoverImage:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/Bottega%20Veneta.jfif?t=2024-09-15T22%3A41%3A20.631Z",imageSrc:'https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/aethestic.jfif?t=2024-09-11T21%3A48%3A58.137Z',Name:"Earrings"},
+const Pros = [
+  {HoverImage:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/Bottega%20Veneta.jfif?t=2024-09-15T22%3A41%3A20.631Z",imageSrc:'https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/aethestic.jfif?t=2024-09-11T21%3A48%3A58.137Z',Name:"Earrings"},
   {Name:"Rings",HoverImage:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/SOLANGE%20RING%20-%208.jfif?t=2024-09-15T22%3A50%3A37.052Z",imageSrc:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/ring.jfif?t=2024-09-11T21%3A52%3A30.319Z"},
   {Name:"Bracelets",HoverImage:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/20%20Summer%20Capsule%20Wardrobe%20Ideas_%20Beach%20to%20Europe%20Essentials.jfif",imageSrc:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/bracelets.jfif"}
   ,{Name:"Necklaces",HoverImage:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/download%20(5).jfif?t=2024-09-15T22%3A51%3A42.663Z",imageSrc:"https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/necklace.jfif"}];
