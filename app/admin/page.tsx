@@ -7,11 +7,6 @@ import {ClerkProvider, useUser} from "@clerk/nextjs"
 import { useRouter } from 'next/navigation'
 function Page() {
   const querybro = new QueryClient();
-  const {isSignedIn,isLoaded} = useUser();
-  const router = useRouter()
-  if(isLoaded&&!isSignedIn){
-    router.push("/admin/signIn")
-  }
   return (
     <QueryClientProvider client={querybro}>
     <Products/>

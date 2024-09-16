@@ -13,7 +13,7 @@ function Navtocat() {
   const Box = ({imageSrc,Name,HoverImage}:ros)=>{
     return  <div className='w-full group relative  md:h-[17.4739375em] md:w-[25%]  h-[18.203125em]  border border-black '>
     <Image blurDataURL={imageSrc}  placeholder="blur" className='w-full  group-hover:hidden h-full object-cover' width={500} height={500} src={`${imageSrc}`} alt={`${Name}`}/>
-    <motion.img initial={{opacity:0.7}} exit={{opacity:0,transition:{duration:1}}} whileTap={{opacity:1}} whileHover={{opacity:1}} transition={{duration:.7}} className='w-full opacity-100  hidden group-hover:opacity-100 group-hover:block h-full object-cover' src={`${HoverImage}`} alt={`${Name}`}/>
+    <Image width={500} height={500} className='w-full opacity-0.6 hidden group-hover:block group-hover:opacity-100 transform-all transition-all duration-300 h-full object-cover' src={`${HoverImage}`} alt={`${Name}`}/>
     <div className={`${font.className} md:text-center  text-[0.875em] font-[500] tracking-[1px] uppercase absolute bottom-0 py-[0.75em] px-[1em]  text-white w-full`}>{Name}</div>
     <span className='w-[80%] group-hover:scale-x-100 scale-x-0 h-[.1em] bg-white absolute bottom-[.4em] origin-left transform  transition-transform duration-[400ms] ease-out'></span>
     </div>

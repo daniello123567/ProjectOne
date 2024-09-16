@@ -8,11 +8,7 @@ import { useRouter } from 'next/navigation'
 const font = localFont({src:"../fonts/std_book.woff2"})
 
 function Page() {
-  const { isLoaded,isSignedIn} = useUser();
-  const {push} = useRouter()
-  if(isLoaded&&!isSignedIn){
-  push("/admin/signIn")
-  }
+ 
   return (
     <div className={`${font.className} pt-[5em]`}>
       <Header/>
