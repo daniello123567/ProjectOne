@@ -1,3 +1,4 @@
+import { useSearchParams } from "next/navigation";
 import {create} from "zustand"
 import { persist } from "zustand/middleware";
 type state = {
@@ -50,7 +51,6 @@ type sing = {
    SingleProductVisiblity:boolean,
    setSingleProduct:(res:boolean)=>void;
 }
-// WORK ON THIS LATER
 export const SingleProduct = create<sing>((set)=>({
   SingleProductVisiblity:false,
   setSingleProduct:(res:boolean)=>set(()=>({SingleProductVisiblity:res}))
@@ -73,7 +73,26 @@ export const ActiveBagPage = create<ActivePage>((set)=>({
   activePage:"Bag",
   setActivePage:(res:string)=>set(()=>({activePage:res}))
 }));
-// export const 
+type ash = {
+  searchVisibility:boolean,
+   showSearch:()=>void,
+   hideSearch:()=>void
+}
+export const SearchVisibility = create<ash>((set)=>({
+   searchVisibility:false,
+   showSearch:()=>set(()=>({searchVisibility:true})),
+   hideSearch:()=>set(()=>({searchVisibility:false}))
+}));
+type current = {
+  currentProduct:currentProduct,
+  setCurrentProduct:(current:currentProduct)=>void;
+}
+export const currentProductView = create<current>((set)=>({
+  currentProduct:{arrayofImages:[""],Name:"",Price:2,"details":"","Tag":"","id":"","Amt_in_stock":0,"color":""},
+  setCurrentProduct:(current:currentProduct)=>set(()=>({currentProduct:current}))
+}));
+
+
 export default myStore;
 
 

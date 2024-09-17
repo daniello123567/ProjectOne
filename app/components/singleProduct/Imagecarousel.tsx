@@ -5,12 +5,13 @@ import { Pagination, Navigation,Scrollbar } from 'swiper/modules'
 import "swiper/css/scrollbar"
 import Image from 'next/image'
 import globalStore from '@/app/store/globalstore'
+import { SingleProduct } from '@/app/store/Store'
 
 const smallFont = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
 
 function Imagecarousel({arrayOfImages}:{arrayOfImages:string[]}){
 
-  const {setSingleproductvisibilty} = useContext(globalStore);
+  const {setSingleProduct} = SingleProduct()
   return (
     <div className='pictures relative md:h-full bg-white h-[20em] md:w-[50%] w-full'>
         <Swiper
@@ -28,7 +29,7 @@ function Imagecarousel({arrayOfImages}:{arrayOfImages:string[]}){
           })}
 
         </Swiper>
-        <Image onClick={()=>setSingleproductvisibilty(false)} alt='image' src="Cancel.svg" width={500} height={500} className='w-[1.5em] z-[300000] absolute top-[1em] right-[1em] h-[1.5em]'/>
+        <Image onClick={()=>setSingleProduct(false)} alt='image' src="Cancel.svg" width={500} height={500} className='w-[1.5em] z-[300000] absolute top-[1em] right-[1em] h-[1.5em]'/>
 
         <div className={`${smallFont.className} absolute top-[1em] left-[1em] bg-[#ece9e0] w-max h-max p-[0.25em] font-[0.75em]`}>New</div>
       </div>

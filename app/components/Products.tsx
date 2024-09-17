@@ -17,6 +17,7 @@ Amt_in_stock:number
 }
 }
 function Products() {
+  // const {} = Data
   const {data,isPending} = useContext(globalStore);
   const Allproducts =()=>{
     return <>

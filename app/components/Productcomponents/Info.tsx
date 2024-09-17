@@ -3,7 +3,7 @@ import React, { useContext, useEffect} from 'react'
 import { useStore } from 'zustand';
 import localFont from 'next/font/local'
 import globalStore from '@/app/store/globalstore';
-import myStore from '@/app/store/Store';
+import myStore, { currentProductView, SingleProduct } from '@/app/store/Store';
 import Wishlistbtn from './wishlistbtn';
 import Gold from '../colors/Gold';
 import Silver from '../colors/Silver';
@@ -17,10 +17,13 @@ return number.toLocaleString();
 
 function Info({details,arrayOfImages,name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
    const {Bag,setBag,removeFromBag} = myStore();
-   const {setSingleproductvisibilty,setcurrentProduct} = useContext(globalStore)
+   const {setSingleProduct} = SingleProduct();
+   const {currentProduct,setCurrentProduct} = currentProductView()
+  //  const {setSingleproductvisibilty,setcurrentProduct} = useContext(globalStore)
 
    const showMoreInfo = ()=>{
-     setcurrentProduct({
+
+     setCurrentProduct({
        arrayofImages:arrayOfImages,
        Name:name,
        color:color,
@@ -30,10 +33,11 @@ function Info({details,arrayOfImages,name,price,color,image,idOfProduct,Tag,Amt_
        id:idOfProduct,
        Amt_in_stock:Amt_in_stock
      });
-       setSingleproductvisibilty(true);
+
+       setSingleProduct(true)
 
    }
-
+// console.log(currentProductt,"currnetProductt")
   const ColorChooser = (color:string)=>{
     const Colore = color.toLowerCase()
     if(Colore=="gold"){

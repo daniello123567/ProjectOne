@@ -4,15 +4,15 @@ import React, { useContext } from 'react'
 import globalStore from '../store/globalstore'
 import localFont from 'next/font/local'
 import {Mukta} from "next/font/google"
-import myStore, { ActiveBagPage, BagVisiblity, SingleProduct, Wishlist } from '../store/Store'
+import myStore, { ActiveBagPage, BagVisiblity, SearchVisibility, SingleProduct, Wishlist } from '../store/Store'
 const font = localFont({src:"../fonts/smallfontforbrondon.woff2"});
 const comfot = localFont({src:"../fonts/MagilioRegular-Yzv2O.ttf"});
 function Mobileheader() {
   const {Bag} = myStore()
   const {wishlist} = Wishlist()
   const {showBag} = BagVisiblity()
-  const {setActivePage} = ActiveBagPage()
-  const {setactivePage,setSearchVisible} = useContext(globalStore);
+  const {setActivePage} = ActiveBagPage();
+  const {showSearch} = SearchVisibility()
   return (
     <>
     <div className='w-full lg:h-[4.5625em] z-[99999] p-[1em] justify-between flex items-center bg-white fixed top-0 h-[3.5625em] border-b border-b-black'>
@@ -22,7 +22,7 @@ function Mobileheader() {
     </div>
     </div>
     <div className='icons gap-[1em] flex'>
-    <Image onClick={()=>setSearchVisible(true)} className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Search.svg" alt='menu' width={500} height={500}/>
+    <Image onClick={showSearch} className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Search.svg" alt='menu' width={500} height={500}/>
     <div className='flex relative'>
     {wishlist.length !==0&&<div className={`${font.className} w-[.2em] absolute flex justify-center items-center text-[0.75em] p-[0.75em] text-white left-[.9em] top-[-.9em] h-[.2em] bg-black rounded-full`}>{wishlist.length}</div>}
     <Image onClick={()=>{showBag();setActivePage('Wishlist');}} className='w-[1em] mr-[1em] h-[1em]' src="/headericons/Wishlist.svg" alt='menu' width={500} height={500}/>

@@ -17,24 +17,11 @@ import Lastpart from './footer/Lastpart'
 import Footer1 from './footer/Footer1'
 import Footer2 from './footer/Footer2'
 import Singleproduct from './singleProduct/Singleproduct'
-import { BagVisiblity } from '../store/Store'
+import { BagVisiblity, currentProductView, SearchVisibility, SingleProduct } from '../store/Store'
+import { create } from 'zustand'
 
 function App() {
   const [showFilter, setFilterVisiblity] = useState(false);
-  // const [showBag, setBagVisibility] = useState<boolean>(false);
-  const [showSearch, setSearchVisible] = useState<boolean>(false);
-  const [activePage, setactivePage] = useState<string>('');
-  const [showSingleproduct, setSingleproductvisibilty] = useState<boolean>(false);
-  const [currentProduct, setcurrentProduct] = useState<currentProduct>({
-    arrayofImages: ["s"],
-    Name: "nube",
-    color: "any",
-    Price: 20,
-    details: "yes",
-    Tag: "yes",
-    id: "sampleid",
-    Amt_in_stock: 1
-  })
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -91,9 +78,14 @@ function App() {
     queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
     queryFn: () => fetchproducts(),
   });
-  const {bagVisiblity} = BagVisiblity()
-  return (
-    <globalStore.Provider value={{ isPending, setSingleproductvisibilty, setcurrentProduct, setSearchVisible, setFilterVisiblity, data, activePage, setactivePage }} >
+  
+
+  const {bagVisiblity} = BagVisiblity();
+  const {searchVisibility} = SearchVisibility();
+  const {SingleProductVisiblity} = SingleProduct();
+  const {currentProduct} = currentProductView();
+    return (
+    <globalStore.Provider value={{ isPending, setFilterVisiblity, data }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
@@ -104,10 +96,9 @@ function App() {
 
         <Shop key={"9034"} />
           {showFilter && <Popupfiltercomponent />}
-          {/* BAG IS NOW ZUSTAND */}
           {bagVisiblity && <BagShop />}
-          {showSearch && <SearchComponent />}
-          {showSingleproduct && <Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
+          {searchVisibility && <SearchComponent />}
+          {SingleProductVisiblity && <Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
         </AnimatePresence>
         {!isPending && <Lastpart />}
         <Footer1 />
