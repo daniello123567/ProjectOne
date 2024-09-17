@@ -1,8 +1,6 @@
 "use client"
-import React, { useContext, useEffect} from 'react'
-import { useStore } from 'zustand';
+import React from 'react'
 import localFont from 'next/font/local'
-import globalStore from '@/app/store/globalstore';
 import myStore, { currentProductView, SingleProduct } from '@/app/store/Store';
 import Wishlistbtn from './wishlistbtn';
 import Gold from '../colors/Gold';
@@ -19,7 +17,6 @@ function Info({details,arrayOfImages,name,price,color,image,idOfProduct,Tag,Amt_
    const {Bag,setBag,removeFromBag} = myStore();
    const {setSingleProduct} = SingleProduct();
    const {currentProduct,setCurrentProduct} = currentProductView()
-  //  const {setSingleproductvisibilty,setcurrentProduct} = useContext(globalStore)
 
    const showMoreInfo = ()=>{
 
@@ -37,7 +34,6 @@ function Info({details,arrayOfImages,name,price,color,image,idOfProduct,Tag,Amt_
        setSingleProduct(true)
 
    }
-// console.log(currentProductt,"currnetProductt")
   const ColorChooser = (color:string)=>{
     const Colore = color.toLowerCase()
     if(Colore=="gold"){

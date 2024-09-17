@@ -91,7 +91,26 @@ export const currentProductView = create<current>((set)=>({
   currentProduct:{arrayofImages:[""],Name:"",Price:2,"details":"","Tag":"","id":"","Amt_in_stock":0,"color":""},
   setCurrentProduct:(current:currentProduct)=>set(()=>({currentProduct:current}))
 }));
-
+type pro = {
+  ProductsArr:product[],
+  isPendingg:boolean,
+  setProducts:(product:product[])=>void,
+  setIsPendingStatus:(status:boolean)=>void
+}
+export const ProductsTate = create<pro>((set)=>({
+  ProductsArr:[],
+  isPendingg:false,
+  setProducts:(product:product[])=>set(()=>({ProductsArr:[...product]})),
+  setIsPendingStatus:(status:boolean)=>set(()=>({isPendingg:status}))
+}));
+type filt = {
+  filterComVisible:boolean,
+  setFilterVisiblity:(payload:boolean)=>void
+}
+export const filterVisible = create<filt>((set)=>({
+  filterComVisible:false,
+  setFilterVisiblity:(payload:boolean)=>set(()=>({filterComVisible:payload}))
+}))
 
 export default myStore;
 

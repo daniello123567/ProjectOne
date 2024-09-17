@@ -1,9 +1,8 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import localFont from 'next/font/local'
 import { useQuery } from '@tanstack/react-query'
 import supabase from '@/utils/supabase'
-import globalStore from '@/app/store/globalstore'
 import Wishlistskeleton from './Wishlistskeleton'
 import { Wishlist } from '@/app/store/Store'
 import Product from '../Product'

@@ -1,7 +1,6 @@
 "use client"
-import React, { useContext } from 'react'
+import React from 'react'
 import Productsinbg from './Productsinbg'
-import globalStore from '@/app/store/globalstore'
 import EstimatedCheckout from './EstimatedCheckout'
 import Emptybg from './Emptybg'
 import Littlemsg from './Littlemsg'

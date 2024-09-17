@@ -1,7 +1,6 @@
 "use client"
-import React, { useContext } from 'react'
+import React from 'react'
 import localFont from 'next/font/local'
-import globalStore from '@/app/store/globalstore'
 import { BagVisiblity } from '@/app/store/Store'
 const font = localFont({src:"../../fonts/dd.woff2"})
 function Emptybg() {

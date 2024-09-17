@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import localFont from 'next/font/local'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation,Scrollbar } from 'swiper/modules'
 import "swiper/css/scrollbar"
 import Image from 'next/image'
-import globalStore from '@/app/store/globalstore'
 import { SingleProduct } from '@/app/store/Store'
 
 const smallFont = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })

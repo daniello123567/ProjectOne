@@ -1,9 +1,8 @@
 "use client"
 import Image from 'next/image'
 import {motion} from "framer-motion"
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import localFont from 'next/font/local'
-import globalStore from '../store/globalstore'
 import BagInBag from './Bagcomponents/BagInBag'
 import Wishlister from './wishlistcomponents/Wishlist'
 import myStore, { ActiveBagPage, BagVisiblity } from '../store/Store'

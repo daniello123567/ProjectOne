@@ -1,7 +1,7 @@
-import React, { memo, useContext, useMemo } from 'react'
+import React from 'react'
 import Product from './Product'
-import globalStore from '../store/globalstore'
 import ProductSkeletons from './shopComponents/ProductsLoad'
+import { ProductsTate } from '../store/Store'
 declare global {
   type product = {
 Category:string;
@@ -17,11 +17,10 @@ Amt_in_stock:number
 }
 }
 function Products() {
-  // const {} = Data
-  const {data,isPending} = useContext(globalStore);
+  const {ProductsArr,isPendingg} = ProductsTate();
   const Allproducts =()=>{
     return <>
-    {data&&data.map((product:product)=>{
+    {ProductsArr.map((product:product)=>{
       return <Product details={product.Details} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
     })}
   </>
@@ -29,7 +28,7 @@ function Products() {
   return (
     <div className='grid lg:gap-[1em] h-auto md:grid-cols-3 lg:grid-cols-4   px-[1em] gap-[.7em]  grid-cols-2 '>
        {
-        isPending?
+        isPendingg?
         <ProductSkeletons key={"90sBoyo"}/>
         :
         <Allproducts key={"ohgod"}/>

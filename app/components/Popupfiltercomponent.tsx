@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import localFont from 'next/font/local'
 import {Switch,ChakraProvider} from "@chakra-ui/react"
 import {AnimatePresence, motion} from "framer-motion"
@@ -8,7 +8,7 @@ const font = localFont({src:"../fonts/dd.woff2"});
 
 const smallfont = localFont({src:"../fonts/smallfontforbrondon.woff2"});
 import { useRouter, useSearchParams } from 'next/navigation';
-import globalStore from '../store/globalstore'
+import { filterVisible, ProductsTate } from '../store/Store'
 function Popupfiltercomponent() {
  const [presentlyCheckedSortoption,setOption] = useState<string>();
  const [presentlyCheckedPriceoption,setPriceOption] = useState<string>();
@@ -100,7 +100,8 @@ const animationVariants = {
   },
  }
 }
-const {setFilterVisiblity,data} = useContext(globalStore);
+const {setFilterVisiblity} = filterVisible();
+const {ProductsArr,isPendingg} = ProductsTate()
   return (
 
     <ChakraProvider>
@@ -148,7 +149,7 @@ const {setFilterVisiblity,data} = useContext(globalStore);
      </div>
       </div>
       <button onClick={()=>setFilterVisiblity(false)} type="button" className={`${font.className} uppercase text-white w-full h-[2.875em] hover:bg-[#626262] bg-black`}>
-        view {data?data.length:'loading..'} items
+        view {!isPendingg?ProductsArr.length:'loading..'} items
       </button>
     </motion.div>
     </ChakraProvider>

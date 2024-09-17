@@ -1,7 +1,6 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import localFont from 'next/font/local'
-import globalStore from '@/app/store/globalstore'
 import myStore from '@/app/store/Store'
 const bold = localFont({src:"../../fonts/dd.woff2"})
 const small = localFont({src:"../../fonts/smallfontforbrondon.woff2"})

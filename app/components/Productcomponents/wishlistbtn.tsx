@@ -1,12 +1,10 @@
 "use client"
-import React, { useCallback, useContext } from 'react'
-import globalStore from '@/app/store/globalstore'
+import React from 'react'
 import MyComponent from '../wishlistcomponents/Wishlisted'
 import HeartIcon from '../wishlistcomponents/Heart'
 import { Wishlist } from '@/app/store/Store'
 function Wishlistbtn({idOfProduct,name,price,color,image,Amt_in_stock}:{idOfProduct:string,name:string,price:number,color:string,image:string,Amt_in_stock:number}) {
   const {wishlist,setWishlist,removeFromWish} = Wishlist();
-  console.log(wishlist);
 
   const isInwishlistAlready = wishlist.some((product:product)=>product.id==idOfProduct);
   const addProductToWishlist = ()=>{

@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import localFont from 'next/font/local';
 import Image from 'next/image';
-import globalStore from '@/app/store/globalstore';
 import myStore from '@/app/store/Store';
 const Active = localFont({src:"../../fonts/dd.woff2"});
 const nonActive = localFont({src:"../../fonts/smallfontforbrondon.woff2"});

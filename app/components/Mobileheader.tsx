@@ -1,9 +1,7 @@
 "use client"
 import Image from 'next/image'
-import React, { useContext } from 'react'
-import globalStore from '../store/globalstore'
+import React from 'react'
 import localFont from 'next/font/local'
-import {Mukta} from "next/font/google"
 import myStore, { ActiveBagPage, BagVisiblity, SearchVisibility, SingleProduct, Wishlist } from '../store/Store'
 const font = localFont({src:"../fonts/smallfontforbrondon.woff2"});
 const comfot = localFont({src:"../fonts/MagilioRegular-Yzv2O.ttf"});

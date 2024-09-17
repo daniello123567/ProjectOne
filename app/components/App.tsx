@@ -1,10 +1,9 @@
 "use client"
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState} from 'react'
 import Hero from './Hero'
 import Navtocat from './Navtocat'
 import Notification from './Notification'
 import Shop from './shopComponents/Shop'
-import globalStore from '../store/globalstore'
 import Popupfiltercomponent from './Popupfiltercomponent'
 import { AnimatePresence } from 'framer-motion'
 import supabase from '@/utils/supabase'
@@ -17,11 +16,9 @@ import Lastpart from './footer/Lastpart'
 import Footer1 from './footer/Footer1'
 import Footer2 from './footer/Footer2'
 import Singleproduct from './singleProduct/Singleproduct'
-import { BagVisiblity, currentProductView, SearchVisibility, SingleProduct } from '../store/Store'
-import { create } from 'zustand'
+import { BagVisiblity, currentProductView, filterVisible, ProductsTate, SearchVisibility, SingleProduct } from '../store/Store'
 
 function App() {
-  const [showFilter, setFilterVisiblity] = useState(false);
   const searchParam = useSearchParams();
   const params = new URLSearchParams(searchParam);
   const availabilty = params.get('availability');
@@ -78,14 +75,21 @@ function App() {
     queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
     queryFn: () => fetchproducts(),
   });
-  
+  const {setProducts,setIsPendingStatus} = ProductsTate()
+  useEffect(()=>{
+    setIsPendingStatus(isPending)
+    if(!isPending){
+     setProducts(data)
+    }
+  },[isPending,data]);
+
 
   const {bagVisiblity} = BagVisiblity();
   const {searchVisibility} = SearchVisibility();
   const {SingleProductVisiblity} = SingleProduct();
   const {currentProduct} = currentProductView();
+  const {filterComVisible} = filterVisible()
     return (
-    <globalStore.Provider value={{ isPending, setFilterVisiblity, data }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
@@ -95,7 +99,7 @@ function App() {
         <Navtocat />
 
         <Shop key={"9034"} />
-          {showFilter && <Popupfiltercomponent />}
+          {filterComVisible && <Popupfiltercomponent />}
           {bagVisiblity && <BagShop />}
           {searchVisibility && <SearchComponent />}
           {SingleProductVisiblity && <Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
@@ -104,7 +108,6 @@ function App() {
         <Footer1 />
         <Footer2 />
       </div>
-    </globalStore.Provider>
   )
 }
 

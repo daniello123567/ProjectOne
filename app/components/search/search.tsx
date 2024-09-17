@@ -1,22 +1,19 @@
 "use client"
 import Image from 'next/image'
-import React, { useContext, useState } from 'react'
+import React, {  useState } from 'react'
 import localFont from 'next/font/local'
 import { useQuery } from '@tanstack/react-query'
 import supabase from '@/utils/supabase'
 import Product from '../Product'
 import { motion } from "framer-motion"
-import globalStore from '@/app/store/globalstore'
 import Suggest from './Suggest'
 import SearchSkelton from './searchSkele'
 import { SearchVisibility } from '@/app/store/Store'
 const font = localFont({ src: "../../fonts/smallfontforbrondon.woff2" });
 function SearchComponent() {
-  const { setSearchVisible } = useContext(globalStore)
   const [searchQuery, setsearchQuery] = useState<string>('');
   const fetchResults = async () => {
     const { data, error } = await supabase.from('jewelries').select().or(`Name.ilike.%${searchQuery}%,Color.ilike.%${searchQuery}%,Details.ilike.%${searchQuery}%`);
-    console.log(data, error);
     return data;
   }
   const { isPending, error, data } = useQuery({
