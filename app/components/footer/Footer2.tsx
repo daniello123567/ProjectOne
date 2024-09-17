@@ -11,15 +11,15 @@ function Footer2() {
            <Image className='w-[1.5em] h-[1.5em]' src="/nigerianflag.svg" width={500} height={500} alt='nigerian flag'/>
            <p>NGN</p>
       </div>
-      <div className='flex gap-[0.5em]'>
-        <Link rel="noopener noreferrer" href="" target='_blank' className='w-[1.2em] h-[1.5em]'>
-        <Image className='w-full h-full' src="/instagram.svg" width={500} height={500} alt='nigerian flag'/>
+      <div className='flex fixed bottom-4 right-4 z-[3000000] gap-[0.5em]'>
+        <Link rel="noopener noreferrer" href="https://www.instagram.com/nube_jewelry/" target='_blank' className='w-[2em] flex justify-center items-center rounded-full bg-[#ece9e0] h-[2em]'>
+        <Image className='w-[1.4em] h-[1.4em]' src="/instagram.svg" width={500} height={500} alt='nigerian flag'/>
 
         </Link>
-        <Link rel="noopener noreferrer" href="https://google.com" target='_blank' className='w-[1.5em] h-[1.5em]'>
-        <Image className='w-[100%] h-[100%]' src="/mail.svg" width={500} height={500} alt='nigerian flag'/>
+        <a rel="noopener noreferrer" href='mailto:helloebun@gmail.com' target='_blank' className='w-[2em] flex justify-center items-center rounded-full bg-[#ece9e0] h-[2em]'>
+        <Image className='w-[1.54em] h-[1.54em]' src="/mail.svg" width={500} height={500} alt='nigerian flag'/>
 
-        </Link>
+        </a>
       </div>
     </div>
   )
