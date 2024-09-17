@@ -12,7 +12,7 @@ import Instock from './Instock'
 import {motion} from "framer-motion"
 import MyComponent from './Wishlisted'
 import Wishliste from './Wishlist'
-import myStore, { Wishlist } from '@/app/store/Store'
+import myStore, { SingleProduct, Wishlist } from '@/app/store/Store'
 const bigFont = localFont({ src: "../../fonts/dd.woff2" });
 
 declare global {
@@ -43,6 +43,7 @@ const variants = {
 
 function Singleproduct({arrayofImages,Name,Price,color,details,Tag,id,Amt_in_stock}:currentProduct) {
  const {wishlist,setWishlist,removeFromWish} = Wishlist();
+ const {SingleProductVisiblity} = SingleProduct()
  const {Bag,setBag,removeFromBag} = myStore();
  const isInBagalready = Bag.some((product:any)=>product.id==id)
  const isInwishlistAlready = wishlist.some((product:product)=>product.id==id);
@@ -85,7 +86,7 @@ const addProductToBag =()=>{
 }
  }
   return (
-    <motion.div  variants={variants} initial="stayDown" animate="comeUp" exit="exit" className='w-full fixed top-0 z-[30000000] md:p-[1em] md:flex h-max min-h-screen  bg-white border overflow-hidden rounded-t-[1em]'>
+    <motion.div  variants={variants} initial="stayDown" animate="comeUp" exit="exit" className={`w-full fixed top-0 z-[30000000] ${!SingleProductVisiblity&&'hidden'} md:p-[1em] md:flex h-max min-h-screen  bg-white border overflow-hidden rounded-t-[1em]`}>
       <Imagecarousel arrayOfImages={arrayofImages}/>
       <div className='information md:w-[50%] md:h-full p-[1em] w-full h-[45%]'>
        <Nameprice Name={Name} Price={Price}/>

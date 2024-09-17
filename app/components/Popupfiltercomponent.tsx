@@ -15,6 +15,7 @@ function Popupfiltercomponent() {
  const [currentSetprice,setcurrentPrice] = useState<number>(8000);
  const {replace} = useRouter();
  const searchParams = useSearchParams();
+ const {filterComVisible} = filterVisible()
  const params = new URLSearchParams(searchParams);
   const clearPricefilter=()=>{
     params.delete('fromPrice');
@@ -105,7 +106,7 @@ const {ProductsArr,isPendingg} = ProductsTate()
   return (
 
     <ChakraProvider>
-    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} pt-[2em] accent-black text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 h-max z-[100000] h-[100vh]`}>
+    <motion.div variants={animationVariants} exit="ex"  initial="init" animate="anim" className={` ${smallfont.className} ${!filterComVisible&&'hidden'} pt-[2em] accent-black text-[1rem] lg:w-[37%] lg:border-r lg:top-0  w-full px-[1em] py-[0.75em] fixed rounded-t-[.5rem] bg-white  bottom-0 h-max z-[100000] h-[100vh]`}>
       <div className='flex  justify-between'>
         <p className={`${font.className} text-[1.25em]`}>Filters</p>
         <button onClick={()=>setFilterVisiblity(false)} type="button" className=''>&#10005;</button>

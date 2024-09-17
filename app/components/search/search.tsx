@@ -10,7 +10,7 @@ import Suggest from './Suggest'
 import SearchSkelton from './searchSkele'
 import { SearchVisibility } from '@/app/store/Store'
 const font = localFont({ src: "../../fonts/smallfontforbrondon.woff2" });
-function SearchComponent() {
+function SearchComponent({visible}:{visible:boolean}) {
   const [searchQuery, setsearchQuery] = useState<string>('');
   const fetchResults = async () => {
     const { data, error } = await supabase.from('jewelries').select().or(`Name.ilike.%${searchQuery}%,Color.ilike.%${searchQuery}%,Details.ilike.%${searchQuery}%`);
@@ -51,7 +51,7 @@ function SearchComponent() {
   }
   const {hideSearch} = SearchVisibility()
    return (
-    <motion.div variants={variants} initial="stayDown" animate="comeUp" exit="exit" className='fixed w-full z-[200000] top-0'>
+    <motion.div variants={variants} initial="stayDown" animate="comeUp" exit="exit" className={`fixed ${!visible&&'hidden'} w-full z-[200000] top-0`}>
       <div className='w-full px-[1em] relative pt-[3em] lg:w-[45%] border h-screen bg-white rounded-t-[1em]'>
         <Image onClick={hideSearch} className='w-[1.7em] absolute right-[1em] top-[1em] h-[1.7em]' src="/Cancel.svg" alt='cancel' width={500} height={500} />
         <div className='w-full border-b border-b-black mb-[1em] relative h-[2.5625em]'>
