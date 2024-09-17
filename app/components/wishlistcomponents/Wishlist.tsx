@@ -11,7 +11,6 @@ import Empty from './Empty'
 const font = localFont({ src: "../../fonts/KapraNeueW05-SemiBold.woff2" })
 const font2 = localFont({ src: "../../fonts/smallfontforbrondon.woff2" })
 function Wishlister() {
-  console.log('wishlist rerenders');
 
   const { wishlist } = Wishlist();
   const fetchProductsBasedOnId = async () => {

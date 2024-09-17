@@ -18,6 +18,7 @@ return number.toLocaleString();
 function Info({details,arrayOfImages,name,price,color,image,idOfProduct,Tag,Amt_in_stock}:prop) {
    const {Bag,setBag,removeFromBag} = myStore();
    const {setSingleproductvisibilty,setcurrentProduct} = useContext(globalStore)
+
    const showMoreInfo = ()=>{
      setcurrentProduct({
        arrayofImages:arrayOfImages,

@@ -45,7 +45,35 @@ export const Wishlist = create<Wish|any>(persist(
   }),{
     name:"Wishlist"
   }
-))
+));
+type sing = {
+   SingleProductVisiblity:boolean,
+   setSingleProduct:(res:boolean)=>void;
+}
+// WORK ON THIS LATER
+export const SingleProduct = create<sing>((set)=>({
+  SingleProductVisiblity:false,
+  setSingleProduct:(res:boolean)=>set(()=>({SingleProductVisiblity:res}))
+}));
+type  BagVisi = {
+  bagVisiblity:boolean,
+  showBag:()=>void,
+  hideBag:()=>void,
+}
+export const BagVisiblity = create<BagVisi>((set)=>({
+  bagVisiblity:false,
+  showBag:()=>set(()=>({bagVisiblity:true})),
+  hideBag:()=>set(()=>({bagVisiblity:false})),
+}))
+type ActivePage = {
+  activePage:string,
+  setActivePage:(res:string)=>void;
+}
+export const ActiveBagPage = create<ActivePage>((set)=>({
+  activePage:"Bag",
+  setActivePage:(res:string)=>set(()=>({activePage:res}))
+}));
+// export const 
 export default myStore;
 
 

@@ -17,10 +17,11 @@ import Lastpart from './footer/Lastpart'
 import Footer1 from './footer/Footer1'
 import Footer2 from './footer/Footer2'
 import Singleproduct from './singleProduct/Singleproduct'
+import { BagVisiblity } from '../store/Store'
 
 function App() {
   const [showFilter, setFilterVisiblity] = useState(false);
-  const [showBag, setBagVisibility] = useState<boolean>(false);
+  // const [showBag, setBagVisibility] = useState<boolean>(false);
   const [showSearch, setSearchVisible] = useState<boolean>(false);
   const [activePage, setactivePage] = useState<string>('');
   const [showSingleproduct, setSingleproductvisibilty] = useState<boolean>(false);
@@ -90,8 +91,9 @@ function App() {
     queryKey: ['products', availabilty, sortBy, fromPrice, Underprice, ProductType],
     queryFn: () => fetchproducts(),
   });
+  const {bagVisiblity} = BagVisiblity()
   return (
-    <globalStore.Provider value={{ isPending, setSingleproductvisibilty, setcurrentProduct, setSearchVisible, setFilterVisiblity, data, setBagVisibility, activePage, setactivePage }} >
+    <globalStore.Provider value={{ isPending, setSingleproductvisibilty, setcurrentProduct, setSearchVisible, setFilterVisiblity, data, activePage, setactivePage }} >
       <div className={`appBody`}>
         <Mobile />
         <Hero />
@@ -102,7 +104,8 @@ function App() {
 
         <Shop key={"9034"} />
           {showFilter && <Popupfiltercomponent />}
-          {showBag && <BagShop />}
+          {/* BAG IS NOW ZUSTAND */}
+          {bagVisiblity && <BagShop />}
           {showSearch && <SearchComponent />}
           {showSingleproduct && <Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
         </AnimatePresence>
