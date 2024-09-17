@@ -25,7 +25,7 @@ function Hero() {
        </div>
     </div>
         <AnimatedHero/>
-        <div className='w-full hidden  overflow-hidden md:grid grid-cols-3  h-[33em] bg-blue-600'>
+        <div className='w-full hidden  overflow-hidden md:grid grid-cols-3 animate-pulseGee h-[33em] bg-gray-200'>
           <Image className='h-full object-cover'  alt='image' src={images[0]} height={500} width={500}/>
           <Image className='h-full object-cover' alt='image' src={images[1]} height={500} width={500}/>
           <Image className='h-full object-cover' alt='image' src={images[2]} height={500} width={500}/>

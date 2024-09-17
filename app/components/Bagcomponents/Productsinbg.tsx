@@ -12,7 +12,7 @@ function Productsinbg({imageThubnail,Name,Color,quantity,id,price,Amt_in_Bag}:Ba
 
   return (
     <div className='bg-white gap-[1em] md:h-[13.03125em] flex p-[1em] lg:h-[8.1875em] border-b border-b-[#ededed] h-[8.1875em] w-full'>
-           <div className='bg-blue-600 h-full w-[30%]'>
+           <div className='bg-gray-200 animate-pulseGee h-full w-[30%]'>
             <Image className='w-full h-full object-cover' src={imageThubnail} width={500} height={500} alt={`image for ${Name}`}/>
            </div>
            <div className=' flex flex-col justify-between h-full w-[70%]'>

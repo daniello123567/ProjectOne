@@ -14,3 +14,4 @@
 .swiper-button-prev::after{@apply fill-black text-black}
 .swiper-button-next::after{@apply fill-black text-black}
  .cl-internal-1dauvpw{@apply hidden}
+img{@apply border-none}

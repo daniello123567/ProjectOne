@@ -28,10 +28,15 @@ const config: Config = {
         fadeIn:{
           '0%': { opacity: '0.7' },
           '100%': { opacity: '1' },
+        },
+        pulseBg:{
+          '0%, 100%': { backgroundColor: '#f0f0f0' },
+          '50%': { backgroundColor: '#e0e0e0' },
         }
       },
       animation:{
-        fadeIn:"fadeIn 0.9s ease-in-out"
+        fadeIn:"fadeIn 0.9s ease-in-out",
+        pulseGee:"pulseBg 1.5s ease-in-out infinite"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

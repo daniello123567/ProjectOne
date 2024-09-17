@@ -11,7 +11,7 @@ function AnimatedHero() {
     "https://oeufvbafcncoumnudrbr.supabase.co/storage/v1/object/public/images/download%20(2).jfif?t=2024-09-15T20%3A00%3A26.076Z",
   ]
   return (
-    <div className='w-full md:hidden h-full'>
+    <div className='w-full bg-gray-200 animate-pulseGee md:hidden h-full'>
       <Slide canSwipe={false} transitionDuration={700} duration={2000} indicators={false} arrows={false}>
         <div className='w-full h-full'>
           <Image placeholder='blur' blurDataURL={images[0]} className='w-full h-full object-cover' alt='image' width={500} height={500} src={`${images[0]}`}/>

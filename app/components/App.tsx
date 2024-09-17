@@ -78,7 +78,7 @@ function App() {
   const {setProducts,setIsPendingStatus} = ProductsTate()
   useEffect(()=>{
     setIsPendingStatus(isPending)
-    if(!isPending){
+    if(!isPending&&data){
      setProducts(data)
     }
   },[isPending,data]);
