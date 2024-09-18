@@ -86,7 +86,7 @@ const addProductToBag =()=>{
 }
  }
   return (
-    <motion.div  variants={variants} initial="stayDown" animate="comeUp" exit="exit" className={`w-full fixed top-0 z-[30000000] ${!SingleProductVisiblity&&'hidden'} md:p-[1em] md:flex h-max min-h-screen  bg-white border overflow-hidden rounded-t-[1em]`}>
+    <motion.div  variants={variants} initial="stayDown" animate="comeUp" exit="exit" className={`w-full fixed top-0 z-[30000000] md:p-[1em] md:flex h-max min-h-screen  bg-white border overflow-hidden rounded-t-[1em]`}>
       <Imagecarousel arrayOfImages={arrayofImages}/>
       <div className='information md:w-[50%] md:h-full p-[1em] w-full h-[45%]'>
        <Nameprice Name={Name} Price={Price}/>

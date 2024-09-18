@@ -98,10 +98,10 @@ function App() {
         <Navtocat />
 
         <Shop key={"9034"} />
-          {<Popupfiltercomponent/>}
+          <Popupfiltercomponent/>
           {<BagShop />}
           {<SearchComponent visible={searchVisibility} />}
-          {<Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
+          {SingleProductVisiblity&&<Singleproduct Amt_in_stock={currentProduct.Amt_in_stock} id={currentProduct.id} Tag={currentProduct.Tag} details={currentProduct.details} color={currentProduct.color} Price={currentProduct.Price} arrayofImages={currentProduct.arrayofImages} Name={currentProduct.Name} />}
         </AnimatePresence>
         {!isPending && <Lastpart />}
         <Footer1 />

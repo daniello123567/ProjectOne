@@ -18,14 +18,18 @@ Amt_in_stock:number
 }
 function Products() {
   const {ProductsArr,isPendingg} = ProductsTate();
+  const Noresult = ()=>{
+    return <p className={`text-center  h-[6em]`}>No Products that matches your query</p>
+  }
   const Allproducts =()=>{
     return <>
-    {ProductsArr.map((product:product)=>{
+    {!isPendingg&&ProductsArr.length!==0&&ProductsArr.map((product:product)=>{
       return <Product details={product.Details} Amt_in_stock={product.Amt_in_stock} Tag={product.Tag} id={product.id} Price={product.Price} images={product.ImagesUrl} key={product.id} Color={product.Color} Name={product.Name}/>
     })}
   </>
   }
   return (
+    <>
     <div className='grid lg:gap-[1em] h-auto md:grid-cols-3 lg:grid-cols-4   px-[.5em] gap-[.7em]  grid-cols-2 '>
        {
         isPendingg?
@@ -34,6 +38,9 @@ function Products() {
         <Allproducts key={"ohgod"}/>
        }
        </div>
+       {!isPendingg&&ProductsArr.length==0&&<Noresult/>}
+
+       </>
   )
 }
 
