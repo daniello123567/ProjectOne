@@ -30,7 +30,7 @@ function Products() {
   }
   return (
     <>
-    <div className='grid lg:gap-[1em] h-auto md:grid-cols-3 lg:grid-cols-4   px-[.5em] gap-[.7em]  grid-cols-2 '>
+    <div className='grid lg:gap-[1em] h-auto md:grid-cols-3 lg:grid-cols-4   px-[.5em] gap-[.5em]  grid-cols-2 '>
        {
         isPendingg?
         <ProductSkeletons key={"90sBoyo"}/>
